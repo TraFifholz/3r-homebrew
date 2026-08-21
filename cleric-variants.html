@@ -15,7 +15,7 @@
     <title>牧师职业替换能力｜3R Homebrew</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
-    <script src="cleric-variants.js" type="module"></script>
+    <script src="cleric-library.js" defer></script>
   </head>
   <body class="variant-page">
     <header class="site-header">
@@ -31,7 +31,7 @@
       <section class="library section-shell" id="library" aria-labelledby="library-title">
         <div class="section-heading library-heading">
           <div><p class="eyebrow">职业选项 · 2 项</p><h2 id="library-title">牧师职业替换能力</h2></div>
-          <p id="result-count" role="status" aria-live="polite">正在载入规则……</p>
+          <p id="result-count" role="status" aria-live="polite">共 2 项</p>
         </div>
         <div class="toolbar domain-toolbar" aria-label="职业替换能力搜索工具">
           <label class="search-box">
@@ -42,33 +42,48 @@
           </label>
           <p class="toolbar-note">牧师 · 2 项</p>
         </div>
-        <div class="technique-list" id="variant-list"></div>
+        <div class="technique-list" id="variant-list">
+          <article class="technique-card variant-card" id="cleric-variant-01" data-search="战争祷言 牧师 1级 领域 法术位 奖励专长 战士等级">
+            <div class="card-index" aria-hidden="true">01</div>
+            <div class="card-body">
+              <header>
+                <div><p class="type-label">牧师职业替换能力</p><h3>战争祷言</h3></div>
+                <button class="copy-link" type="button" data-anchor="cleric-variant-01" title="复制此能力的链接" aria-label="复制战争祷言的链接">链接</button>
+              </header>
+              <dl class="variant-meta">
+                <div><dt>限制</dt><dd>牧师</dd></div>
+                <div><dt>等级</dt><dd>1级</dd></div>
+              </dl>
+              <dl class="rule-block variant-rule-block">
+                <div class="loss"><dt>失去</dt><dd>一个领域，并且在1-9环上每法术等级都失去一个法术位。</dd></div>
+                <div class="gain"><dt>得到</dt><dd>1级时，你获得一项奖励专长，5级及之后每5级（10级、15级、20级）时再额外获得一项。你获得的奖励专长必须从如下列表中选取：盲斗、擅长重甲、精通盾击、擅长军用武器、盾牌专精、擅长塔盾、武器专攻、武器专精、强韧加强、健壮、擅长异种武器、钢铁意志、高等武器专攻、高等武器专精、精通重击、近程武器熟稔、远程武器熟稔。只在选取这些专长时，你可以视同拥有等同于你的牧师职业等级的战士等级一般来决定你是否满足专长前置，但你仍必须满足专长的其他前置要求。</dd></div>
+              </dl>
+            </div>
+          </article>
+          <article class="technique-card variant-card" id="cleric-variant-02" data-search="专注领域 牧师 1级 领域法术 超魔专长 领域法术位">
+            <div class="card-index" aria-hidden="true">02</div>
+            <div class="card-body">
+              <header>
+                <div><p class="type-label">牧师职业替换能力</p><h3>专注领域</h3></div>
+                <button class="copy-link" type="button" data-anchor="cleric-variant-02" title="复制此能力的链接" aria-label="复制专注领域的链接">链接</button>
+              </header>
+              <dl class="variant-meta">
+                <div><dt>限制</dt><dd>牧师</dd></div>
+                <div><dt>等级</dt><dd>1级</dd></div>
+              </dl>
+              <dl class="rule-block variant-rule-block">
+                <div class="loss"><dt>失去</dt><dd>一个领域。</dd></div>
+                <div class="gain"><dt>得到</dt><dd>1级、5级和之后的每5级（10级、15级、20级）时，你都可以选择一项你已经能够施展的领域法术，并为其搭配一项只提升1环法术等级的超魔专长，此后你在用领域法术位施展此领域法术时自动视为具有所选的超魔效果，而不提升法术需要的法术位，一旦选定之后不可更改。你可以为多项不同专长选择同一个领域法术。你无须拥有对应的超魔专长即可为领域法术追加超魔效果。</dd></div>
+              </dl>
+            </div>
+          </article>
+        </div>
         <div class="empty-state" id="empty-state" hidden>
           <p class="empty-glyph" aria-hidden="true">∅</p>
           <h3>没有找到对应能力</h3>
           <p>试试搜索“领域”“法术位”“专长”或具体名称。</p>
           <button class="button button-ghost" id="clear-search" type="button">清除搜索</button>
         </div>
-
-        <template id="variant-template">
-          <article class="technique-card variant-card" data-type="职业替换能力">
-            <div class="card-index" aria-hidden="true"></div>
-            <div class="card-body">
-              <header>
-                <div><p class="type-label">牧师职业替换能力</p><h3></h3></div>
-                <button class="copy-link" type="button" title="复制此能力的链接" aria-label="复制此能力的链接">链接</button>
-              </header>
-              <dl class="variant-meta">
-                <div><dt>限制</dt><dd class="restriction"></dd></div>
-                <div><dt>等级</dt><dd class="level"></dd></div>
-              </dl>
-              <dl class="rule-block variant-rule-block">
-                <div class="loss"><dt>失去</dt><dd></dd></div>
-                <div class="gain"><dt>得到</dt><dd></dd></div>
-              </dl>
-            </div>
-          </article>
-        </template>
       </section>
     </main>
   </body>
