@@ -16,7 +16,7 @@ export function extractEntries(source, definitions, endMarker, searchFrom = 0) {
 }
 
 const nav = (current) => [
-  ["index.html", "扩展技法"], ["domain-feats.html", "领域专长"], ["feats.html", "专长"],
+  ["index.html", "扩展技法"], ["feats.html", "专长"],
   ["cleric-variants.html", "牧师"], ["scout-rework.html", "斥候"], ["ranger-update.html", "巡林客"],
   ["rogue-update.html", "游荡者"], ["bard-movements.html", "诗人"], ["prestige-classes.html", "进阶职业"],
   ["harrowing.html", "哈罗占卜"], ["equipment.html", "装备"],

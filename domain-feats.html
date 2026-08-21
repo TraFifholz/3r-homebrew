@@ -3,69 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#16130f" />
-    <meta name="description" content="D&D 3.5e 中文房规资料库：19 项领域专长，包含每日能力与驱散、斥喝不死生物次数转换规则。" />
-    <meta property="og:title" content="领域专长｜3R Homebrew" />
-    <meta property="og:description" content="为 D&D 3.5e 整理的 19 项领域专长中文规则。" />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://trafifholz.github.io/3r-homebrew/domain-feats.html" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="领域专长｜3R Homebrew" />
-    <meta name="twitter:description" content="为 D&D 3.5e 整理的 19 项领域专长中文规则。" />
-    <title>领域专长｜3R Homebrew</title>
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css" />
-    <script src="domain-feats.js" type="module"></script>
+    <meta http-equiv="refresh" content="0; url=feats.html#feats-domain-23" />
+    <link rel="canonical" href="https://trafifholz.github.io/3r-homebrew/feats.html" />
+    <title>专长｜3R Homebrew</title>
+    <script>
+      const match = location.hash.match(/^#domain-feat-(\d+)$/);
+      if (match) location.replace(`feats.html#feats-domain-${String(22 + Number(match[1])).padStart(2, "0")}`);
+    </script>
   </head>
-  <body class="domain-page">
-    <header class="site-header">
-      <a class="brand" href="index.html" aria-label="3R Homebrew 首页"><span class="brand-mark" aria-hidden="true">3R</span><strong>Homebrew</strong></a>
-      <nav aria-label="主导航">
-        <a href="index.html">扩展技法</a>
-        <a href="domain-feats.html" aria-current="page">领域专长</a>
-        <a href="feats.html">专长</a><a href="cleric-variants.html">牧师</a><a href="scout-rework.html">斥候</a><a href="ranger-update.html">巡林客</a><a href="rogue-update.html">游荡者</a><a href="bard-movements.html">诗人</a><a href="prestige-classes.html">进阶职业</a><a href="harrowing.html">哈罗占卜</a><a href="equipment.html">装备</a>
-        <a href="https://github.com/TraFifholz/3r-homebrew" target="_blank" rel="noreferrer">GitHub ↗</a>
-      </nav>
-    </header>
-    <main>
-      <section class="library section-shell" id="library" aria-labelledby="library-title">
-        <div class="section-heading library-heading">
-          <div><p class="eyebrow">规则索引 · 19 项</p><h2 id="library-title">领域专长</h2></div>
-          <p id="result-count" role="status" aria-live="polite">正在载入规则……</p>
-        </div>
-        <div class="toolbar domain-toolbar" aria-label="领域专长搜索工具">
-          <label class="search-box">
-            <span class="sr-only">搜索领域专长</span>
-            <span aria-hidden="true">⌕</span>
-            <input id="search" type="search" placeholder="搜索名称或规则文字…" autocomplete="off" />
-            <kbd>/</kbd>
-          </label>
-          <p class="toolbar-note">19 项 · [领域]</p>
-        </div>
-        <div class="technique-list" id="feat-list"></div>
-        <div class="empty-state" id="empty-state" hidden>
-          <p class="empty-glyph" aria-hidden="true">∅</p>
-          <h3>没有找到对应专长</h3>
-          <p>试试缩短关键词，或搜索动作类型、豁免与伤害等规则词。</p>
-          <button class="button button-ghost" id="clear-search" type="button">清除搜索</button>
-        </div>
-
-        <template id="feat-template">
-          <article class="technique-card domain-feat-card" data-type="领域专长">
-            <div class="card-index" aria-hidden="true"></div>
-            <div class="card-body">
-              <header>
-                <div><p class="type-label">领域专长</p><h3></h3></div>
-                <button class="copy-link" type="button" title="复制此专长的链接" aria-label="复制此专长的链接">链接</button>
-              </header>
-              <dl class="rule-block domain-rule-block">
-                <div class="effect"><dt>效果</dt><dd></dd></div>
-                <div class="specials"><dt>特殊</dt><dd><ul></ul></dd></div>
-              </dl>
-            </div>
-          </article>
-        </template>
-      </section>
-    </main>
-  </body>
+  <body><p>领域专长已并入<a href="feats.html#feats-domain-23">专长页</a>。</p></body>
 </html>

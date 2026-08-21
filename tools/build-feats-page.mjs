@@ -4,6 +4,7 @@ import { extractEntries, writeCatalogPage } from "./catalog-page-helpers.mjs";
 const base = (await readFile(new URL("../sources/feats-prestige.txt", import.meta.url), "utf8")).replace(/\r\n?/g, "\n");
 const harrow = (await readFile(new URL("../sources/harrow-options.txt", import.meta.url), "utf8")).replace(/\r\n?/g, "\n");
 const profession = (await readFile(new URL("../sources/profession-feats.txt", import.meta.url), "utf8")).replace(/\r\n?/g, "\n");
+const domainData = JSON.parse(await readFile(new URL("../data/domain-feats.json", import.meta.url), "utf8"));
 const definitions = [
   { name: "密文魔法（Cypher Magic）", marker: "密文魔法（Cypher Magic）" },
   { name: "瓦瑞西安刺青（Varisian Tattoo）", marker: "瓦瑞西安刺青（Varisian Tattoo）" },
@@ -34,5 +35,25 @@ const professionDefinitions = [
 ];
 const entries = [...extractEntries(base, definitions, "新进阶职业："), ...extractEntries(harrow, harrowDefinitions, "新物品"), ...extractEntries(profession, professionDefinitions, null)];
 if (entries.length !== 22) throw new Error(`Unexpected feat count: ${entries.length}`);
-const result = await writeCatalogPage({ outputPath: new URL("../feats.html", import.meta.url), slug: "feats", title: "专长", eyebrow: "角色选项 · 22项专长", description: "D&D与Pathfinder中文规则资料：二十二项专长。", sections: [{ key: "feat", label: "专长", entries }], placeholder: "搜索专长、前提或效果…" });
+const domainEntries = domainData.feats.map((feat) => ({
+  name: `${feat.name}[领域]`,
+  typeLabel: "领域专长",
+  fields: [
+    { label: "效果", value: feat.effect },
+    { label: "特殊", value: feat.special.join("\n") },
+  ],
+}));
+if (domainEntries.length !== 19) throw new Error(`Unexpected domain feat count: ${domainEntries.length}`);
+const result = await writeCatalogPage({
+  outputPath: new URL("../feats.html", import.meta.url),
+  slug: "feats",
+  title: "专长",
+  eyebrow: "角色选项 · 41项专长",
+  description: "D&D与Pathfinder中文规则资料：一般专长与领域专长。",
+  sections: [
+    { key: "feat", label: "一般专长", shortLabel: "一般", entryLabel: "专长", entries },
+    { key: "domain", label: "领域专长", shortLabel: "领域", entries: domainEntries },
+  ],
+  placeholder: "搜索专长、前提、类型或效果…",
+});
 console.log(JSON.stringify(result, null, 2));
