@@ -5,6 +5,7 @@ const base = (await readFile(new URL("../sources/feats-prestige.txt", import.met
 const harrow = (await readFile(new URL("../sources/harrow-options.txt", import.meta.url), "utf8")).replace(/\r\n?/g, "\n");
 const profession = (await readFile(new URL("../sources/profession-feats.txt", import.meta.url), "utf8")).replace(/\r\n?/g, "\n");
 const combatAmbush = (await readFile(new URL("../sources/combat-ambush-feats.txt", import.meta.url), "utf8")).replace(/\r\n?/g, "\n");
+const divineCompanion = (await readFile(new URL("../sources/divine-and-companion-feats.txt", import.meta.url), "utf8")).replace(/\r\n?/g, "\n");
 const domainData = JSON.parse(await readFile(new URL("../data/domain-feats.json", import.meta.url), "utf8"));
 const definitions = [
   { name: "密文魔法（Cypher Magic）", marker: "密文魔法（Cypher Magic）" },
@@ -68,7 +69,7 @@ function parseTypedFeats(text) {
   return headings.map((heading, index) => {
     const tags = [...heading[2].matchAll(/\[([^\]]+)\]/g)].map((match) => match[1]);
     const body = text.slice(heading.index + heading[0].length, headings[index + 1]?.index ?? text.length);
-    const category = tags.includes("伏击") ? "ambush" : tags.includes("战斗") ? "combat" : "general";
+    const category = tags.includes("伏击") ? "ambush" : tags.includes("神力") ? "divine" : tags.includes("战斗") ? "combat" : "general";
     return { name: `${heading[1].trim()}${heading[2]}`, typeLabel: `${tags.join("／")}专长`, category, fields: parseRuleBody(body) };
   });
 }
@@ -82,8 +83,8 @@ function referencedFeat({ name, tags, startMarker, endMarker, stripLine }) {
   return { name: `${name}${tags.map((tag) => `[${tag}]`).join("")}`, typeLabel: `${tags.join("／")}专长`, category: tags.includes("战斗") ? "combat" : "general", fields: parseRuleBody(body) };
 }
 
-const typedEntries = parseTypedFeats(combatAmbush);
-if (typedEntries.length !== 24) throw new Error(`Unexpected new feat count: ${typedEntries.length}`);
+const typedEntries = [...parseTypedFeats(combatAmbush), ...parseTypedFeats(divineCompanion)];
+if (typedEntries.length !== 31) throw new Error(`Unexpected new feat count: ${typedEntries.length}`);
 const referencedEntries = [
   referencedFeat({ name: "狂舞（Dervish Dance）", tags: ["战斗"], startMarker: "狂舞（战斗）", endMarker: "神圣光辉（Divine Light" }),
   referencedFeat({ name: "日光召唤（Sunlight Summons）", tags: ["一般"], startMarker: "日光召唤\n", endMarker: "日光屏障（Solar Defense" }),
@@ -93,8 +94,10 @@ const referencedEntries = [
 const generalEntries = [...entries, ...typedEntries.filter((entry) => entry.category === "general"), ...referencedEntries.filter((entry) => entry.category === "general")];
 const combatEntries = [...typedEntries.filter((entry) => entry.category === "combat"), ...referencedEntries.filter((entry) => entry.category === "combat")];
 const ambushEntries = typedEntries.filter((entry) => entry.category === "ambush");
-if (generalEntries.length !== 27 || combatEntries.length !== 8 || ambushEntries.length !== 15) throw new Error("Unexpected categorized feat counts");
-const domainEntries = domainData.feats.map((feat) => ({
+const divineEntries = typedEntries.filter((entry) => entry.category === "divine");
+if (generalEntries.length !== 28 || combatEntries.length !== 9 || ambushEntries.length !== 15 || divineEntries.length !== 5) throw new Error("Unexpected categorized feat counts");
+const domainEntries = domainData.feats.map((feat, index) => ({
+  id: `feats-domain-${String(index + 51).padStart(2, "0")}`,
   name: `${feat.name}[领域]`,
   typeLabel: "领域专长",
   fields: [
@@ -107,12 +110,13 @@ const result = await writeCatalogPage({
   outputPath: new URL("../feats.html", import.meta.url),
   slug: "feats",
   title: "专长",
-  eyebrow: "角色选项 · 69项专长",
-  description: "D&D与Pathfinder中文规则资料：一般、战斗、伏击与领域专长。",
+  eyebrow: "角色选项 · 76项专长",
+  description: "D&D与Pathfinder中文规则资料：一般、战斗、伏击、神力与领域专长。",
   sections: [
     { key: "feat", label: "一般专长", shortLabel: "一般", entryLabel: "专长", entries: generalEntries },
     { key: "combat", label: "战斗专长", shortLabel: "战斗", entries: combatEntries },
     { key: "ambush", label: "伏击专长", shortLabel: "伏击", entries: ambushEntries },
+    { key: "divine", label: "神力专长", shortLabel: "神力", entries: divineEntries },
     { key: "domain", label: "领域专长", shortLabel: "领域", entries: domainEntries },
   ],
   placeholder: "搜索专长、前提、类型或效果…",

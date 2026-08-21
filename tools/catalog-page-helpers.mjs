@@ -29,7 +29,7 @@ export async function writeCatalogPage({ outputPath, slug, title, eyebrow, descr
   const sectionHtml = sections.map((section) => {
     const entries = section.entries.map((entry) => {
       sequence += 1;
-      const id = `${slug}-${section.key}-${String(sequence).padStart(2, "0")}`;
+      const id = entry.id ?? `${slug}-${section.key}-${String(sequence).padStart(2, "0")}`;
       const fields = entry.fields.map((field) => `<div${field.kind ? ` class="entry-field-${escapeHtml(field.kind)}"` : ""}><dt>${escapeHtml(field.label)}</dt><dd>${formatValue(field.value)}</dd></div>`).join("\n");
       return `<article class="scout-entry${entry.className ? ` ${escapeHtml(entry.className)}` : ""}" id="${id}" data-category="${section.key}"><header><div><p class="type-label">${escapeHtml(entry.typeLabel ?? section.entryLabel ?? section.label)}</p><h3>${escapeHtml(entry.name)}</h3></div><button class="copy-link" type="button" data-anchor="${id}">链接</button></header><dl class="entry-fields">${fields}</dl></article>`;
     }).join("\n");
