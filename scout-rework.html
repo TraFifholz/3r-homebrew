@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#16130f" />
+    <meta name="description" content="D&D 3.5e 中文房规：斥候职业重做，包含20级进展、斥候奇术、陷阱、专长与职业替换能力。" />
+    <meta property="og:title" content="斥候重做｜3R Homebrew" />
+    <meta property="og:description" content="完整的 D&D 3.5e 斥候职业重做规则。" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://trafifholz.github.io/3r-homebrew/scout-rework.html" />
+    <meta name="twitter:card" content="summary" />
+    <title>斥候重做｜3R Homebrew</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="scout-library.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">3R</span><strong>Homebrew</strong></a>
+      <nav aria-label="主导航">
+        <a href="index.html">扩展技法</a><a href="domain-feats.html">领域专长</a><a href="cleric-variants.html">职业替换</a><a href="scout-rework.html" aria-current="page">斥候重做</a><a href="https://github.com/TraFifholz/3r-homebrew" target="_blank" rel="noreferrer">GitHub ↗</a>
+      </nav>
+    </header>
+    <main>
+      <section class="library section-shell scout-library" id="library" aria-labelledby="library-title">
+        <div class="section-heading library-heading"><div><p class="eyebrow">职业重做 · 67 项规则条目</p><h2 id="library-title">斥候（Scout）</h2></div><p id="result-count" role="status" aria-live="polite">共 67 项</p></div>
+        <div class="scout-summary"><dl><div><dt>生命骰</dt><dd>d8</dd></div><div><dt>阵营</dt><dd>任意</dd></div><div><dt>技能点</dt><dd>8+智力调整值，1级时×4。</dd></div></dl><p><strong>本职技能：</strong>平衡（敏捷）、攀爬（力量）、手艺（智力）、医疗（感知）、解除装置（智力）、脱逃术（敏捷）、躲藏（敏捷）、跳跃（力量）、知识（地下城，智力）、知识（地理，智力）、知识（自然，智力）、聆听（感知）、潜行（敏捷）、骑术（敏捷）、专业（感知）、搜索（智力）、察言观色（感知）、语言（N/A）、侦察（感知）、生存（感知）、游泳（力量）、翻滚（敏捷）和绳技（敏捷）。</p></div>
+        <div class="toolbar scout-toolbar" aria-label="斥候规则筛选工具">
+          <label class="search-box"><span class="sr-only">搜索斥候规则</span><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜索能力、奇术、陷阱或规则文字…" autocomplete="off" /><kbd>/</kbd></label>
+          <div class="type-filters" id="scout-filters" role="group" aria-label="按规则分类筛选"><button class="filter is-active" type="button" data-category="全部" aria-pressed="true">全部</button><button class="filter" type="button" data-category="ability" aria-pressed="false">职业能力</button><button class="filter" type="button" data-category="trick" aria-pressed="false">奇术</button><button class="filter" type="button" data-category="trap" aria-pressed="false">陷阱</button><button class="filter" type="button" data-category="feat" aria-pressed="false">专长</button><button class="filter" type="button" data-category="variant" aria-pressed="false">职业替换</button></div>
+        </div>
+        <section class="scout-progress" aria-labelledby="progress-title"><h3 id="progress-title">职业进展</h3><div class="class-table-wrap"><table><thead><tr><th>等级</th><th>基本攻击加值</th><th>强韧</th><th>反射</th><th>意志</th><th>特殊能力</th></tr></thead><tbody><tr><th scope="row">1</th><td>+0</td><td>+0</td><td>+2</td><td>+0</td><td>散兵战术+1d6、寻找陷阱、战斗强韧+1、快速移动+10尺</td></tr>
+<tr><th scope="row">2</th><td>+1</td><td>+0</td><td>+3</td><td>+0</td><td>直觉闪避、斥候奇术</td></tr>
+<tr><th scope="row">3</th><td>+2</td><td>+1</td><td>+3</td><td>+1</td><td>散兵战术+1d6/+1、无踪步</td></tr>
+<tr><th scope="row">4</th><td>+3</td><td>+1</td><td>+4</td><td>+1</td><td>反射闪避、斥候奇术</td></tr>
+<tr><th scope="row">5</th><td>+3</td><td>+1</td><td>+4</td><td>+1</td><td>散兵战术+2d6/+1</td></tr>
+<tr><th scope="row">6</th><td>+4</td><td>+2</td><td>+6</td><td>+2</td><td>斥候奇术、健步如飞</td></tr>
+<tr><th scope="row">7</th><td>+5</td><td>+2</td><td>+6</td><td>+2</td><td>散兵战术+2d6/+2</td></tr>
+<tr><th scope="row">8</th><td>+6/+1</td><td>+2</td><td>+7</td><td>+2</td><td>斥候奇术、伪装</td></tr>
+<tr><th scope="row">9</th><td>+6/+1</td><td>+3</td><td>+7</td><td>+3</td><td>散兵战术+3d6/+2</td></tr>
+<tr><th scope="row">10</th><td>+7/+2</td><td>+3</td><td>+8</td><td>+3</td><td>30尺盲感、斥候奇术</td></tr>
+<tr><th scope="row">11</th><td>+8/+3</td><td>+3</td><td>+8</td><td>+3</td><td>散兵战术+3d6/+3、战斗强韧+2、快速移动+20尺</td></tr>
+<tr><th scope="row">12</th><td>+9/+4</td><td>+4</td><td>+10</td><td>+4</td><td>斥候奇术</td></tr>
+<tr><th scope="row">13</th><td>+9/+4</td><td>+4</td><td>+10</td><td>+4</td><td>散兵战术+4d6/+3</td></tr>
+<tr><th scope="row">14</th><td>+10/+5</td><td>+4</td><td>+11</td><td>+4</td><td>视线躲藏、斥候奇术</td></tr>
+<tr><th scope="row">15</th><td>+11/+6/+1</td><td>+5</td><td>+11</td><td>+5</td><td>散兵战术+4d6/+4</td></tr>
+<tr><th scope="row">16</th><td>+12/+7/+2</td><td>+5</td><td>+12</td><td>+5</td><td>斥候奇术</td></tr>
+<tr><th scope="row">17</th><td>+12/+7/+2</td><td>+5</td><td>+12</td><td>+5</td><td>散兵战术+5d6/+4</td></tr>
+<tr><th scope="row">18</th><td>+13/+8/+3</td><td>+6</td><td>+14</td><td>+6</td><td>行动自如、斥候奇术</td></tr>
+<tr><th scope="row">19</th><td>+14/+9/+4</td><td>+6</td><td>+14</td><td>+6</td><td>散兵战术+5d6/+5</td></tr>
+<tr><th scope="row">20</th><td>+15/+10/+5</td><td>+6</td><td>+15</td><td>+6</td><td>30尺盲视、斥候奇术、战斗强韧+3、快速移动+30尺</td></tr></tbody></table></div></section>
+        <section class="scout-section" data-section="ability"><h3>职业能力 <span>15</span></h3><div class="scout-entries"><article class="scout-entry" id="scout-ability-01" data-category="ability">
+      <header><div><p class="type-label">职业能力</p><h3>武器和防具擅长</h3></div><button class="copy-link" type="button" data-anchor="scout-ability-01">链接</button></header>
+      <div class="entry-body"><p>斥候擅长所有简易武器，再加上手斧、飞斧、短弓、短剑和手枪。他们也擅长轻甲，但不擅长盾牌。</p></div>
+    </article>
+<article class="scout-entry" id="scout-ability-02" data-category="ability">
+      <header><div><p class="type-label">职业能力 · 特异能力</p><h3>散兵战术</h3></div><button class="copy-link" type="button" data-anchor="scout-ability-02">链接</button></header>
+      <div class="entry-body"><p>斥候依靠机动力制造额外伤害并改善防御。1级起，只要他移动至少10尺（距离那一轮的起始点），在这轮中他在移动10尺后的所有攻击都能造成1d6点额外伤害，1级之后每4级此额外伤害再增加1d6点（5级+2d6，9级+3d6，13级+4d6，17级+5d6）。这种额外伤害只适用于斥候在他的行动轮内进行的攻击，并且只能应用在具有明显身体结构的活物身上，不死生物、构装体、泥怪、植物、虚体生物以及任何免疫重击的生物也免疫此额外伤害。斥候必须能够仔细观察目标找到要害部位，并且必须能接触到该部位，因此这种额外伤害对有隐蔽或掩蔽的生物不适用。斥候也可将散兵战术的额外伤害应用到远程攻击上，但目标必须在30尺范围内。</p>
+<p>3级起，只要斥候移动至少10尺，他就能在AC上获得+1加值，这种加值在他移动10尺之后立即生效，并持续至他的下个行动轮开始时。3级之后每4级此加值额外增加1点（7级时+2，11级+3，15级+4，19级+5）。</p>
+<p>若斥候穿着中甲或重甲，或是中载、重载时他将失去此能力。若斥候从其他职业处获得散兵战术能力，奖励将叠加。散兵战术在骑乘时无效。</p></div>
+    </article>
+<article class="scout-entry" id="scout-ability-03" data-category="ability">
+      <header><div><p class="type-label">职业能力 · 特异能力</p><h3>寻找陷阱</h3></div><button class="copy-link" type="button" data-anchor="scout-ability-03">链接</button></header>
+      <div class="entry-body"><p>1级起，斥候可以用搜索技能来寻找那些DC在20以上的陷阱。找到非魔法陷阱的DC至少为20，如果隐藏的比较好还会更高。找到魔法陷阱的DC等于25+制造此陷阱法术的法术等级。</p>
+<p>斥候可以用解除装置技能来拆卸魔法陷阱。拆卸魔法陷阱的DC等于25+制造此陷阱法术的法术等级。如果解除装置技能检定结果高过陷阱DC10或以上，斥候可以研究此陷阱，看出它如何运作，还可以不拆卸而通过陷阱（连同队友）。</p>
+<p>此外，斥候在搜索陷阱的搜索检定和解除陷阱的解除装置检定中获得+1加值，之后每4级此加值额外增加1（5级+2，9级+3，13级+4，17级+5）。此修改波及所有寻找陷阱职业能力。当从两个不同职业获得寻找陷阱职业能力时，将职业等级累加以决定加值。</p></div>
+    </article>
+<article class="scout-entry" id="scout-ability-04" data-category="ability">
+      <header><div><p class="type-label">职业能力 · 特异能力</p><h3>战斗强韧</h3></div><button class="copy-link" type="button" data-anchor="scout-ability-04">链接</button></header>
+      <div class="entry-body"><p>1级起，斥候在强韧豁免和先攻检定上获得+1表现加值，此加值在11级时增加至+2，在20级时增加至+3。若斥候穿着中甲或重甲，或是中载、重载时他将失去此能力。</p></div>
+    </article>
+<article class="scout-entry" id="scout-ability-05" data-category="ability">
+      <header><div><p class="type-label">职业能力 · 特异能力</p><h3>快速移动</h3></div><button class="copy-link" type="button" data-anchor="scout-ability-05">链接</button></header>
+      <div class="entry-body"><p>1级起，斥候的基本陆地速度获得+10尺增强加值，此加值在11级时增加至+20尺，在20级时增加至+30尺。若斥候穿着中甲或重甲，或是中载、重载时他将失去此能力。</p></div>
+    </article>
+<article class="scout-entry" id="scout-ability-06" data-category="ability">
+      <header><div><p class="type-label">职业能力 · 特异能力</p><h3>直觉闪避</h3></div><button class="copy-link" type="button" data-anchor="scout-ability-06">链接</button></header>
+      <div class="entry-body"><p>2级起，斥候在措手不及时或被不可见的攻击者攻击时依然保留AC上的敏捷加值。不过如果他不能动，他还是会丢掉AC上的敏捷加值。如果斥候已经由其他职业上获得了直觉闪避能力，则改为获得精通直觉闪避。</p></div>
+    </article>
+<article class="scout-entry" id="scout-ability-07" data-category="ability">
+      <header><div><p class="type-label">职业能力</p><h3>斥候奇术</h3></div><button class="copy-link" type="button" data-anchor="scout-ability-07">链接</button></header>
+      <div class="entry-body"><p>2级起，斥候可以学会一项斥候奇术（见下），这些奇术可以给斥候及其盟友带来额外加值和各种增益效果。2级之后每2级（4级、6级、8级、10级……至20级）时，斥候都能学会一项新的斥候奇术。奇术一旦选定则无法更改。除非特别说明，否则斥候不能重复选取同一项奇术。</p>
+<p>斥候也可以用学习奇术的机会学会布置一种斥候陷阱的能力（见下）。以一个会引发借机攻击的整轮动作，斥候可以在身旁5尺范围内一格中设置一个他已知的斥候陷阱。一个陷阱占地5尺，并且不能被放置在其他斥候陷阱或魔法陷阱上。斥候可以用如衣服残片、小块金属、树枝、短绳等非常简单的材料设置陷阱，因此他不需要额外准备陷阱的材料（除非陷阱说明中特别指出需要某种材料）。使用搜索技能发现斥候陷阱的检定DC和避免陷阱攻击的豁免检定DC均为10+1/2斥候职业等级+斥候的感知调整值，解除斥候陷阱的解除装置DC则在此DC上额外+5（如果陷阱类型为魔法陷阱还额外需要寻找陷阱职业能力）。斥候陷阱的触发条件均为踩上，且无法被复位。斥候总是了解他自己布设的陷阱，并能指导队伍通过斥候陷阱而不触发它（即使他因为某些原因而没有寻找陷阱职业能力）。斥候每天能够布置的斥候陷阱的总数量等于斥候的职业等级+斥候的感知调整值。</p>
+<p>斥候陷阱有机械和魔法两种类别，机械陷阱属于特异能力，魔法陷阱则属于超自然能力。一部分陷阱只能使用机械或魔法两种方式中的一种进行布设。机械陷阱的豁免DC-2，但能持续每斥候等级一天，魔法陷阱则仅持续每斥候等级一小时。标有*的陷阱可以被加在其他斥候陷阱上并同时触发。</p></div>
+    </article>
+<article class="scout-entry" id="scout-ability-08" data-category="ability">
+      <header><div><p class="type-label">职业能力 · 特异能力</p><h3>无踪步</h3></div><button class="copy-link" type="button" data-anchor="scout-ability-08">链接</button></header>
+      <div class="entry-body"><p>3级起，斥候在自然环境下不会留下任何痕迹，也无法被追踪。他也可以在需要的时候选择留下痕迹。</p></div>
+    </article>
+<article class="scout-entry" id="scout-ability-09" data-category="ability">
+      <header><div><p class="type-label">职业能力 · 特异能力</p><h3>反射闪避</h3></div><button class="copy-link" type="button" data-anchor="scout-ability-09">链接</button></header>
+      <div class="entry-body"><p>4级起，若斥候面对一个通过反射检定可以减少一半伤害的效果，在成功通过反射检定后他将完全不受伤害。斥候只在穿轻甲或不穿甲时才可以进行反射闪避。无助状态下的斥候不能进行反射闪避。若斥候已从其他职业获得反射闪避，则改为获得精通反射闪避。</p></div>
+    </article>
+<article class="scout-entry" id="scout-ability-10" data-category="ability">
+      <header><div><p class="type-label">职业能力 · 特异能力</p><h3>健步如飞</h3></div><button class="copy-link" type="button" data-anchor="scout-ability-10">链接</button></header>
+      <div class="entry-body"><p>6级起，斥候可以以正常速度通过任何通常会限制移动的地形（例如矮树丛、碎石堆等类似地形），而不会受到伤害或其他损失。此能力不能让斥候快速穿过需要攀爬或游泳检定的地形，他也不能快速通过任何用魔法生成或加强的困难地形。</p></div>
+    </article>
+<article class="scout-entry" id="scout-ability-11" data-category="ability">
+      <header><div><p class="type-label">职业能力 · 特异能力</p><h3>伪装</h3></div><button class="copy-link" type="button" data-anchor="scout-ability-11">链接</button></header>
+      <div class="entry-body"><p>8级起，斥候可以在任何自然地形下使用躲藏技能，即使该地形没有提供掩蔽或隐蔽物。</p></div>
+    </article>
+<article class="scout-entry" id="scout-ability-12" data-category="ability">
+      <header><div><p class="type-label">职业能力 · 特异能力</p><h3>盲感</h3></div><button class="copy-link" type="button" data-anchor="scout-ability-12">链接</button></header>
+      <div class="entry-body"><p>10级起，斥候获得30尺盲感能力，如同同名怪物能力。</p></div>
+    </article>
+<article class="scout-entry" id="scout-ability-13" data-category="ability">
+      <header><div><p class="type-label">职业能力 · 特异能力</p><h3>视线躲藏</h3></div><button class="copy-link" type="button" data-anchor="scout-ability-13">链接</button></header>
+      <div class="entry-body"><p>14级起，斥候可以在任何自然地形中使用躲藏技能，即使正被看到。斥候只在穿轻甲且负载不超过轻载时才能使用此能力，当穿着中甲、重甲，或者中载、重载时他将失去此能力。</p></div>
+    </article>
+<article class="scout-entry" id="scout-ability-14" data-category="ability">
+      <header><div><p class="type-label">职业能力 · 特异能力</p><h3>行动自如</h3></div><button class="copy-link" type="button" data-anchor="scout-ability-14">链接</button></header>
+      <div class="entry-body"><p>18级起，斥候可以从纠缠、擒抱甚至具有限制行动效果的法术中轻易逃脱，如同法术“行动自如”，但这是一个特异能力且一直生效。斥候只在穿轻甲且负载不超过轻载时才能使用此能力，当穿着中甲、重甲，或者中载、重载时他将失去此能力。</p></div>
+    </article>
+<article class="scout-entry" id="scout-ability-15" data-category="ability">
+      <header><div><p class="type-label">职业能力 · 特异能力</p><h3>盲视</h3></div><button class="copy-link" type="button" data-anchor="scout-ability-15">链接</button></header>
+      <div class="entry-body"><p>20级起，斥候获得30尺盲视能力，他的感官变得如此敏锐，以至于他能在完全的黑暗中毫无困难的移动和战斗。这项能力可以让隐形、黑暗和大多数隐蔽对他无效，但是斥候必须和生物或物体具有效果线才能看到目标。</p></div>
+    </article></div></section>
+        <section class="scout-section" data-section="trick"><h3>斥候奇术 <span>24</span></h3><div class="scout-entries"><article class="scout-entry" id="scout-trick-16" data-category="trick">
+      <header><div><p class="type-label">斥候奇术 · 特异能力</p><h3>援助攻击</h3></div><button class="copy-link" type="button" data-anchor="scout-trick-16">链接</button></header>
+      <div class="entry-body"><p>选取此奇术的斥候可以在攻击命中对手时以一个迅捷动作使用这一奇术，直到斥候的下次行动轮结束前，其他同伴对这一目标的攻击获得+4环境加值。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trick-17" data-category="trick">
+      <header><div><p class="type-label">斥候奇术 · 特异能力</p><h3>伙伴援助</h3></div><button class="copy-link" type="button" data-anchor="scout-trick-17">链接</button></header>
+      <div class="entry-body"><p>当30尺范围内的一名同伴（不能是斥候自身）成为一次近战或远程攻击的目标时，选取此奇术的斥候可以以一个直觉动作令该同伴的AC在对抗此次攻击时获得+4加值，如果此次攻击仍然命中，则该同伴只受到一半伤害。同伴必须能够看见斥候且听到他的声音才能从此能力中获益。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trick-18" data-category="trick">
+      <header><div><p class="type-label">斥候奇术 · 特异能力</p><h3>猫之轻灵</h3></div><button class="copy-link" type="button" data-anchor="scout-trick-18">链接</button></header>
+      <div class="entry-body"><p>当选取此奇术的斥候从20尺或者更高的高度落下时，以一个直觉动作，他可以在计算坠落伤害时忽视20尺高度。如果斥候在这次坠落中没有受到伤害，那么他不会因落地而摔倒俯卧。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trick-19" data-category="trick">
+      <header><div><p class="type-label">斥候奇术 · 特异能力</p><h3>变色龙之诡步</h3></div><button class="copy-link" type="button" data-anchor="scout-trick-19">链接</button></header>
+      <div class="entry-body"><p>以一个迅捷动作，选取此奇术的斥候可以移动不超过其基本陆地速度的距离，他在此次移动中不承受躲藏或潜行技能上的减值（但仍会引发借机攻击）。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trick-20" data-category="trick">
+      <header><div><p class="type-label">斥候奇术 · 特异能力</p><h3>万能手语</h3></div><button class="copy-link" type="button" data-anchor="scout-trick-20">链接</button></header>
+      <div class="entry-body"><p>选取此奇术的斥候可以用手语和一个生物进行交流，如同处于“巧言术”法术效果之中。但以手语交流毕竟是件精细麻烦的工作，斥候对此生物的唬骗和交涉检定均要承受-4减值，且进行任何交涉尝试所需的时间加倍。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trick-21" data-category="trick">
+      <header><div><p class="type-label">斥候奇术 · 特异能力</p><h3>防御式射击</h3></div><button class="copy-link" type="button" data-anchor="scout-trick-21">链接</button></header>
+      <div class="entry-body"><p>以一个迅捷动作，选取此奇术的斥候可以在进行远程攻击时不引发借机攻击，持续一轮。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trick-22" data-category="trick">
+      <header><div><p class="type-label">斥候奇术 · 特异能力</p><h3>灵巧起身</h3></div><button class="copy-link" type="button" data-anchor="scout-trick-22">链接</button></header>
+      <div class="entry-body"><p>选取此奇术的斥候可以以一个迅捷动作起身而不引发借机攻击。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trick-23" data-category="trick">
+      <header><div><p class="type-label">斥候奇术 · 特异能力</p><h3>干扰攻击</h3></div><button class="copy-link" type="button" data-anchor="scout-trick-23">链接</button></header>
+      <div class="entry-body"><p>选取此奇术的斥候可以在攻击命中对手时以一个迅捷动作使用这一奇术，使目标生物在所有攻击检定上承受-4减值，持续一轮。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trick-24" data-category="trick">
+      <header><div><p class="type-label">斥候奇术 · 特异能力</p><h3>恨意打击</h3></div><button class="copy-link" type="button" data-anchor="scout-trick-24">链接</button></header>
+      <div class="entry-body"><p>以一个迅捷动作，选取此奇术的斥候可以在攻击一个失去AC上的敏捷加值的敌人、或是夹击一个敌人时，令他的一次攻击的重击威胁范围加倍。此能力可以与其他增加重击范围的效果叠加，但并不与其叠乘。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trick-25" data-category="trick">
+      <header><div><p class="type-label">斥候奇术 · 特异能力</p><h3>妨碍攻击</h3></div><button class="copy-link" type="button" data-anchor="scout-trick-25">链接</button></header>
+      <div class="entry-body"><p>选取此奇术的斥候可以在攻击命中对手时以一个迅捷动作使用这一奇术，使目标生物的基本陆地速度减半，持续1d4轮。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trick-26" data-category="trick">
+      <header><div><p class="type-label">斥候奇术 · 特异能力</p><h3>快速攀爬</h3></div><button class="copy-link" type="button" data-anchor="scout-trick-26">链接</button></header>
+      <div class="entry-body"><p>选取此奇术的斥候可以以移动动作进行全速攀爬而不受任何惩罚。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trick-27" data-category="trick">
+      <header><div><p class="type-label">斥候奇术 · 特异能力</p><h3>快速游泳</h3></div><button class="copy-link" type="button" data-anchor="scout-trick-27">链接</button></header>
+      <div class="entry-body"><p>选取此奇术的斥候可以以移动动作进行全速游泳而不受任何惩罚。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trick-28" data-category="trick">
+      <header><div><p class="type-label">斥候奇术 · 特异能力</p><h3>战地医疗</h3></div><button class="copy-link" type="button" data-anchor="scout-trick-28">链接</button></header>
+      <div class="entry-body"><p>以一个移动动作，选取此奇术的斥候可以对一个濒死角色进行医疗检定以稳定伤势。此外，选取此奇术的斥候也可以以一个移动动作为自己或同伴使用药水，取代原本的标准动作。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trick-29" data-category="trick">
+      <header><div><p class="type-label">斥候奇术 · 特异能力</p><h3>斥候指引</h3></div><button class="copy-link" type="button" data-anchor="scout-trick-29">链接</button></header>
+      <div class="entry-body"><p>以一个迅捷动作，选取此奇术的斥候可以令30尺范围内所有能够看见他的同伴在一项技能检定上获得+4环境加值，持续一轮，斥候必须已在此项技能上受训。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trick-30" data-category="trick">
+      <header><div><p class="type-label">斥候奇术 · 特异能力</p><h3>噪音攻势</h3></div><button class="copy-link" type="button" data-anchor="scout-trick-30">链接</button></header>
+      <div class="entry-body"><p>选取此奇术的斥候可以在进行一次攻击时以一个迅捷动作使用这一奇术，若这次攻击命中，目标生物将战栗1d4轮。这是一个影响心灵的恐惧效果。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trick-31" data-category="trick">
+      <header><div><p class="type-label">斥候奇术 · 特异能力</p><h3>二次攻击</h3></div><button class="copy-link" type="button" data-anchor="scout-trick-31">链接</button></header>
+      <div class="entry-body"><p>以一个直觉动作，选取此奇术的斥候可以重投一次失败的攻击检定，但要在重投的检定中承受-5减值。斥候必须接受重投的结果，即使那更糟。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trick-32" data-category="trick">
+      <header><div><p class="type-label">斥候奇术 · 特异能力</p><h3>技能达人</h3></div><button class="copy-link" type="button" data-anchor="scout-trick-32">链接</button></header>
+      <div class="entry-body"><p>选择一项已受训的技能，在进行此技能的技能检定时，选取此奇术的斥候可以以一个直觉动作在技能检定中投骰两次并选择较好的结果。斥候可以重复选取此项奇术，每次选择一项不同的技能。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trick-33" data-category="trick">
+      <header><div><p class="type-label">斥候奇术 · 特异能力</p><h3>一蹴而就</h3></div><button class="copy-link" type="button" data-anchor="scout-trick-33">链接</button></header>
+      <div class="entry-body"><p>选取此奇术的斥候在跳跃前无须助跑。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trick-34" data-category="trick">
+      <header><div><p class="type-label">斥候奇术 · 特异能力</p><h3>诡步</h3></div><button class="copy-link" type="button" data-anchor="scout-trick-34">链接</button></header>
+      <div class="entry-body"><p>选取此奇术的斥候可以以一个迅捷动作移动5尺，这一移动不引发借机攻击，也不被视作五尺快步。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trick-35" data-category="trick">
+      <header><div><p class="type-label">斥候奇术 · 特异能力</p><h3>束缚攻击</h3></div><button class="copy-link" type="button" data-anchor="scout-trick-35">链接</button></header>
+      <div class="entry-body"><p>选取此奇术的斥候可以在攻击命中对手时以一个迅捷动作使用这一奇术，使目标生物被纠缠一轮。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trick-36" data-category="trick">
+      <header><div><p class="type-label">斥候奇术 · 特异能力</p><h3>射击奇术</h3></div><button class="copy-link" type="button" data-anchor="scout-trick-36">链接</button></header>
+      <div class="entry-body"><p>以一个迅捷动作，选取此奇术的斥候在一次远程攻击中忽略目标所拥有的低于全隐蔽和全掩蔽的隐蔽和掩蔽效果。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trick-37" data-category="trick">
+      <header><div><p class="type-label">斥候奇术 · 特异能力</p><h3>离奇感知</h3></div><button class="copy-link" type="button" data-anchor="scout-trick-37">链接</button></header>
+      <div class="entry-body"><p>以一个迅捷动作，选取此奇术的斥候可以在侦察检定或聆听检定中获得+10表现加值，持续一轮。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trick-38" data-category="trick">
+      <header><div><p class="type-label">斥候奇术 · 特异能力</p><h3>震摔攻势</h3></div><button class="copy-link" type="button" data-anchor="scout-trick-38">链接</button></header>
+      <div class="entry-body"><p>选取此奇术的斥候可以在以近战攻击命中对手时以一个迅捷动作使用这一奇术，他可以立即以一个自由动作尝试摔绊目标生物，这不会引发借机攻击，即使摔绊失败也不会遭到反摔绊。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trick-39" data-category="trick">
+      <header><div><p class="type-label">斥候奇术 · 特异能力</p><h3>复仇打击</h3></div><button class="copy-link" type="button" data-anchor="scout-trick-39">链接</button></header>
+      <div class="entry-body"><p>选取此奇术的斥候可以在对手以近战或远程攻击命中他或他的一位同伴时以一个直觉动作使用这一奇术。他可以以他的最高基本攻击加值对攻击者进行一次近战攻击（前提是他能够攻击到目标）。</p></div>
+    </article></div></section>
+        <section class="scout-section" data-section="trap"><h3>斥候陷阱 <span>15</span></h3><div class="scout-entries"><article class="scout-entry" id="scout-trap-40" data-category="trap">
+      <header><div><p class="type-label">斥候陷阱 · 机械/魔法</p><h3>警报陷阱*</h3></div><button class="copy-link" type="button" data-anchor="scout-trap-40">链接</button></header>
+      <div class="entry-body"><p>警报陷阱被触发时会发出巨大响声，如同“魔法警报”，但不具有心灵警报的功能。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trap-41" data-category="trap">
+      <header><div><p class="type-label">斥候陷阱 · 机械/魔法</p><h3>圈套陷阱</h3></div><button class="copy-link" type="button" data-anchor="scout-trap-41">链接</button></header>
+      <div class="entry-body"><p>圈套陷阱可以缠住目标的肢体，触发陷阱的生物进行一次反射豁免，若通过则仅被纠缠1轮，且在移出方格时脱离纠缠状态。若反射豁免失败，目标处于纠缠状态并且不能移出当前方格。目标可以以整轮动作尝试脱逃检定（DC等于陷阱的豁免DC），若成功则能结束该效果。目标也可以以标准动作尝试DC25的力量检定来崩毁陷阱。圈套陷阱不能困住占据范围比陷阱本身更大的生物。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trap-42" data-category="trap">
+      <header><div><p class="type-label">斥候陷阱 · 机械/魔法</p><h3>火焰陷阱</h3></div><button class="copy-link" type="button" data-anchor="scout-trap-42">链接</button></header>
+      <div class="entry-body"><p>火焰陷阱对触发陷阱的生物造成1d6+1d6/每2个斥候等级点火焰伤害，成功的反射豁免可以令伤害减半。如果此陷阱以机械方式被设置，则需要一份炽火胶。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trap-43" data-category="trap">
+      <header><div><p class="type-label">斥候陷阱 · 机械/魔法</p><h3>爆炸陷阱</h3></div><button class="copy-link" type="button" data-anchor="scout-trap-43">链接</button></header>
+      <div class="entry-body"><p>爆炸陷阱对陷阱所在地点和周围5尺范围内的全部生物造成1d6+1d6/每2个斥候等级点火焰伤害，成功的反射豁免可以令伤害减半。如果此陷阱以机械方式被设置，则需要一份炽火胶。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trap-44" data-category="trap">
+      <header><div><p class="type-label">斥候陷阱 · 机械/魔法</p><h3>冰冻陷阱</h3></div><button class="copy-link" type="button" data-anchor="scout-trap-44">链接</button></header>
+      <div class="entry-body"><p>冰冻陷阱对触发陷阱的生物造成1d6+1d6/每4个斥候等级点寒冷伤害并将目标冻结在地上，如同受到绊足包的影响，成功的反射豁免可以减半伤害且不受纠缠。击碎冰块需要15点钝击伤害，取代正常的挥砍伤害。如果此陷阱以机械方式被设置，则需要一份炼金霜。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trap-45" data-category="trap">
+      <header><div><p class="type-label">斥候陷阱 · 机械/魔法</p><h3>标记陷阱*</h3></div><button class="copy-link" type="button" data-anchor="scout-trap-45">链接</button></header>
+      <div class="entry-body"><p>触发标记陷阱的生物需要通过一个反射豁免否则会被染上明显的气味和颜色，以生存检定追踪目标的DC减少5点，且目标的易容和躲藏检定承受-10罚值，在面对灵敏嗅觉能力时会在双倍距离上被发现。洗去印记需要花费至少15分钟以大量的水清洗，否则印记持续时间等于标记陷阱的剩余持续时间。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trap-46" data-category="trap">
+      <header><div><p class="type-label">斥候陷阱 · 机械/魔法</p><h3>毒素陷阱</h3></div><button class="copy-link" type="button" data-anchor="scout-trap-46">链接</button></header>
+      <div class="entry-body"><p>如果毒素陷阱是魔法陷阱，目标必须通过一个强韧豁免否则承受1d6点体质伤害，并在一分钟后需要再次豁免避免1d6体质伤害的后续伤害。如果这是一个机械陷阱，则需要一份吸入、接触或伤口性毒素，陷阱的效果为此毒素的效果，但豁免DC使用斥候陷阱的DC。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trap-47" data-category="trap">
+      <header><div><p class="type-label">斥候陷阱 · 魔法</p><h3>雨雪陷阱</h3></div><button class="copy-link" type="button" data-anchor="scout-trap-47">链接</button></header>
+      <div class="entry-body"><p>雨雪陷阱触发后在20尺范围内产生法术“雪风暴”的效果，降雪仅持续一轮，但结冰效果持续每斥候等级一轮。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trap-48" data-category="trap">
+      <header><div><p class="type-label">斥候陷阱 · 机械/魔法</p><h3>集群陷阱</h3></div><button class="copy-link" type="button" data-anchor="scout-trap-48">链接</button></header>
+      <div class="entry-body"><p>此陷阱在触发时放出一群蝙蝠、老鼠或蜘蛛集群（在设置时选定）袭击所有距离最近的目标，集群在每斥候等级一轮后溃散，用斥候陷阱的DC取代集群的扰乱心神能力DC。如果这是一个机械陷阱，则需要一天份口粮维持这些动物的生存。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trap-49" data-category="trap">
+      <header><div><p class="type-label">斥候陷阱 · 机械/魔法</p><h3>弩箭陷阱</h3></div><button class="copy-link" type="button" data-anchor="scout-trap-49">链接</button></header>
+      <div class="entry-body"><p>触发弩箭陷阱的生物必须通过一个反射豁免，否则被弩箭自动命中，造成1d8+1d6/每斥候等级点的穿刺伤害。免疫重击的生物只会受到1d8点伤害如果此陷阱以机械方式被设置，则需要一把轻弩和一支弩箭，使用更高威力的弩不会提升陷阱的效果。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trap-50" data-category="trap">
+      <header><div><p class="type-label">斥候陷阱 · 魔法</p><h3>催眠陷阱</h3></div><button class="copy-link" type="button" data-anchor="scout-trap-50">链接</button></header>
+      <div class="entry-body"><p>触发催眠陷阱的目标必须通过一个意志豁免否则受到如同“睡眠术”效果影响，持续每斥候等级一轮。此陷阱对HD超过布置者斥候等级的生物无效。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trap-51" data-category="trap">
+      <header><div><p class="type-label">斥候陷阱 · 魔法</p><h3>幻影陷阱</h3></div><button class="copy-link" type="button" data-anchor="scout-trap-51">链接</button></header>
+      <div class="entry-body"><p>幻影陷阱会在60尺范围内预先选定的一点上创造一个影像，如同“无声幻影”。影像可以以每轮60尺的速度向预定的方向移动，或进行一些特定的行为（以不超过25字的短句描述指令）。识破幻影的意志豁免DC等于陷阱DC。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trap-52" data-category="trap">
+      <header><div><p class="type-label">斥候陷阱 · 魔法</p><h3>召唤盟友陷阱</h3></div><button class="copy-link" type="button" data-anchor="scout-trap-52">链接</button></header>
+      <div class="entry-body"><p>召唤盟友陷阱在被触发时在距离触发点最近的位置上召唤一个生物，并在触发者的行动轮结束后立即行动，如同“一级召唤自然盟友”，并在4级之后每4级提升一级（8级时改为二级召唤自然盟友，12级时改为三级召唤自然盟友，16级时改为四级召唤自然盟友，20级时改为五级召唤自然盟友）。所召唤的生物必须在设置陷阱时选定，并可以决定一个不超过25字短句的指令，召唤生物会优先遵守此指令，否则攻击触发者。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trap-53" data-category="trap">
+      <header><div><p class="type-label">斥候陷阱 · 机械/魔法</p><h3>绊索陷阱</h3></div><button class="copy-link" type="button" data-anchor="scout-trap-53">链接</button></header>
+      <div class="entry-body"><p>绊索陷阱可以令触发陷阱的生物进行一次反射豁免，失败则摔倒至俯卧状态。10级起，被绊索陷阱成功摔绊的生物若在一轮内尝试起身，则起身所需的动作提升一级（移动动作变为标准动作，迅捷动作或自由动作变为移动动作）。</p></div>
+    </article>
+<article class="scout-entry" id="scout-trap-54" data-category="trap">
+      <header><div><p class="type-label">斥候陷阱 · 机械/魔法</p><h3>陷坑陷阱</h3></div><button class="copy-link" type="button" data-anchor="scout-trap-54">链接</button></header>
+      <div class="entry-body"><p>陷坑陷阱可以令触发陷阱的生物落入深坑，效果如同法术“造坑术”（Create Pit，PF进阶玩家手册APG），施法者等级等于斥候职业等级。以机械方式设置陷坑陷阱需要有真实存在的陷坑，若没有则需要花费1分钟时间进行挖掘。以魔法方式设置的陷坑陷阱不需要提前挖掘，但这样的陷坑会在法术持续时间结束时恢复为平地（参见造坑术法术详述）。10级起，你可以在陷坑陷阱中加入尖刺，令其效果改为如同法术“刺坑”（Spiked Pit，PF进阶玩家手册APG）</p></div>
+    </article></div></section>
+        <section class="scout-section" data-section="feat"><h3>斥候专长 <span>8</span></h3><div class="scout-entries"><article class="scout-entry" id="scout-feat-55" data-category="feat">
+      <header><div><p class="type-label">一般专长</p><h3>额外奇术</h3></div><button class="copy-link" type="button" data-anchor="scout-feat-55">链接</button></header>
+      <dl class="entry-fields"><div><dt>前提</dt><dd>斥候奇术职业能力</dd></div>
+<div><dt>效果</dt><dd>你立即获得一项额外的斥候奇术，或者，你也可以选择改为学会一种斥候陷阱。你只能获得标准斥候的能力列表中列出的斥候奇术或斥候陷阱。</dd></div>
+<div><dt>特殊</dt><dd>你可以重复选择此专长，每次获得一项不同的斥候奇术或斥候陷阱。</dd></div></dl>
+    </article>
+<article class="scout-entry" id="scout-feat-56" data-category="feat">
+      <header><div><p class="type-label">一般专长</p><h3>陷阱学习</h3></div><button class="copy-link" type="button" data-anchor="scout-feat-56">链接</button></header>
+      <dl class="entry-fields"><div><dt>前提</dt><dd>生存5级，在斥候职业上没有等级</dd></div>
+<div><dt>效果</dt><dd>选择一种斥候陷阱，你学会如何布置和使用这种陷阱。你只能以机械形式布置陷阱（并因此承受DC上的-2减值）。你的陷阱DC为10+1/2你的角色等级+你的感知调整值，持续时间为每2个角色等级1天。如果你在斥候职业上获得了等级并得到斥候奇术职业能力，则将此专长替换为额外奇术专长，并选择相同的斥候陷阱。</dd></div>
+<div><dt>特殊</dt><dd>你可以重复选择此专长，每次学会一种不同的斥候陷阱。</dd></div></dl>
+    </article>
+<article class="scout-entry" id="scout-feat-57" data-category="feat">
+      <header><div><p class="type-label">一般专长</p><h3>快速布陷</h3></div><button class="copy-link" type="button" data-anchor="scout-feat-57">链接</button></header>
+      <dl class="entry-fields"><div><dt>前提</dt><dd>已知一种斥候陷阱</dd></div>
+<div><dt>效果</dt><dd>你可以以一个移动动作布置一个斥候陷阱，取代通常的整轮动作，这会如常引发借机攻击。</dd></div></dl>
+    </article>
+<article class="scout-entry" id="scout-feat-58" data-category="feat">
+      <header><div><p class="type-label">一般专长</p><h3>迅捷布陷</h3></div><button class="copy-link" type="button" data-anchor="scout-feat-58">链接</button></header>
+      <dl class="entry-fields"><div><dt>前提</dt><dd>已知两种或更多斥候陷阱，快速布陷</dd></div>
+<div><dt>效果</dt><dd>你可以以一个迅捷动作布置一个斥候陷阱，取代通常的整轮动作，这不会引发借机攻击。</dd></div></dl>
+    </article>
+<article class="scout-entry" id="scout-feat-59" data-category="feat">
+      <header><div><p class="type-label">一般专长</p><h3>进阶陷阱能力</h3></div><button class="copy-link" type="button" data-anchor="scout-feat-59">链接</button></header>
+      <dl class="entry-fields"><div><dt>前提</dt><dd>已知一种斥候陷阱</dd></div>
+<div><dt>效果</dt><dd>发现或解除你的斥候陷阱的搜索或解除装置检定的DC+2，且对抗你的斥候陷阱的豁免检定DC+2。</dd></div></dl>
+    </article>
+<article class="scout-entry" id="scout-feat-60" data-category="feat">
+      <header><div><p class="type-label">一般专长</p><h3>广域陷阱能力</h3></div><button class="copy-link" type="button" data-anchor="scout-feat-60">链接</button></header>
+      <dl class="entry-fields"><div><dt>前提</dt><dd>已知两种或更多斥候陷阱</dd></div>
+<div><dt>效果</dt><dd>你可以指定你的斥候陷阱占据最多4个互相连接的格子，陷阱效果会着重于首先进入范围的生物，若有多个生物同时进入，则随机选择一个目标。</dd></div></dl>
+    </article>
+<article class="scout-entry" id="scout-feat-61" data-category="feat">
+      <header><div><p class="type-label">一般专长</p><h3>灵活散兵战术</h3></div><button class="copy-link" type="button" data-anchor="scout-feat-61">链接</button></header>
+      <dl class="entry-fields"><div><dt>前提</dt><dd>散兵战术+1d6/+1</dd></div>
+<div><dt>效果</dt><dd>当你使用散兵战术能力时，你可以减少此能力提供的额外伤害来增加你从散兵战术中获得的AC加值，每减少1d6点额外伤害可以增加1点AC加值。或者，你可以减少此能力提供的AC加值来增加你从散兵战术中获得额外伤害，每减少1点AC加值可以增加1d6点额外伤害。你必须在散兵战术适用时选择如何分配AC加值与额外伤害，所作的决定将持续至你的下个行动轮开始时。</dd></div></dl>
+    </article>
+<article class="scout-entry" id="scout-feat-62" data-category="feat">
+      <header><div><p class="type-label">一般专长</p><h3>骑乘散兵战术</h3></div><button class="copy-link" type="button" data-anchor="scout-feat-62">链接</button></header>
+      <dl class="entry-fields"><div><dt>前提</dt><dd>散兵战术职业能力，骑乘战斗，骑术1级</dd></div>
+<div><dt>效果</dt><dd>当进行骑乘时，你可以将坐骑的移动视作你的移动来判断你是否能使用散兵战术能力，你从散兵战术能力中获得的AC加值也加在你的坐骑的AC上。</dd></div></dl>
+    </article></div></section>
+        <section class="scout-section" data-section="variant"><h3>职业替换能力 <span>5</span></h3><div class="scout-entries"><article class="scout-entry" id="scout-variant-63" data-category="variant">
+      <header><div><p class="type-label">职业替换能力</p><h3>用毒</h3></div><button class="copy-link" type="button" data-anchor="scout-variant-63">链接</button></header>
+      <dl class="entry-fields"><div><dt>限制</dt><dd>游荡者、斥候、盗法者、杂学士或暗影秘使</dd></div>
+<div><dt>等级</dt><dd>1级</dd></div>
+<div><dt>失去</dt><dd>寻找陷阱能力</dd></div>
+<div><dt>得到</dt><dd>你永远不会在为武器淬毒和使用带毒武器战斗时误伤自己，你可以以一个迅捷动作为武器淬毒。</dd></div></dl>
+    </article>
+<article class="scout-entry" id="scout-variant-64" data-category="variant">
+      <header><div><p class="type-label">职业替换能力</p><h3>强化感官</h3></div><button class="copy-link" type="button" data-anchor="scout-variant-64">链接</button></header>
+      <dl class="entry-fields"><div><dt>限制</dt><dd>游荡者、斥候</dd></div>
+<div><dt>等级</dt><dd>1级</dd></div>
+<div><dt>失去</dt><dd>寻找陷阱职业能力</dd></div>
+<div><dt>得到</dt><dd>获得原始天赋作为奖励专长，并且获得自我催眠作为本职技能。在察言观色检定上获得+1加值，1级后每4级额外+1（5级+2，9级+3，13级+4，17级+5）。</dd></div></dl>
+    </article>
+<article class="scout-entry" id="scout-variant-65" data-category="variant">
+      <header><div><p class="type-label">职业替换能力</p><h3>物品制造</h3></div><button class="copy-link" type="button" data-anchor="scout-variant-65">链接</button></header>
+      <dl class="entry-fields"><div><dt>限制</dt><dd>游荡者、斥候、盗法者、杂学士或暗影秘使</dd></div>
+<div><dt>等级</dt><dd>1级</dd></div>
+<div><dt>失去</dt><dd>寻找陷阱能力</dd></div>
+<div><dt>得到</dt><dd>你在以手艺技能制作物品时可以每小时进行一次检定取代每周，你一天最多只能如此工作八小时。你不需要类法术施法能力来满足手艺（炼金术）技能的前置条件。最后，你在手艺（制毒）和手艺（炼金术）技能检定上获得+1加值，1级之后每4级此加值额外+1（5级+2、9级+3、13级+4、17级+5），若你从其他职业获得物品制造能力，将职业等级累加以决定加值。</dd></div></dl>
+    </article>
+<article class="scout-entry" id="scout-variant-66" data-category="variant">
+      <header><div><p class="type-label">职业替换能力</p><h3>截击</h3></div><button class="copy-link" type="button" data-anchor="scout-variant-66">链接</button></header>
+      <dl class="entry-fields"><div><dt>限制</dt><dd>斥候</dd></div>
+<div><dt>等级</dt><dd>1级</dd></div>
+<div><dt>失去</dt><dd>散兵战术</dd></div>
+<div><dt>得到</dt><dd>1级起，在进行借机攻击或以准备动作发动攻击时，斥候在攻击检定上获得+1加值。1级之后每4级此加值额外增加1（5级+2，9级+3，13级+4，17级+5）。3级起，在进行借机攻击或以准备动作发动攻击时，斥候可以造成1d6点额外伤害。3级之后每4级此额外伤害增加1d6点（7级+2d6，11级+3d6，15级+4d6，19级+5d6）。免疫重击的生物也免疫此额外伤害，斥候必须能仔细观察目标，若用于远程攻击则目标必须在30尺范围内。当斥候穿中甲或重甲，或者中载或重载时她将失去此能力。</dd></div></dl>
+    </article>
+<article class="scout-entry" id="scout-variant-67" data-category="variant">
+      <header><div><p class="type-label">职业替换能力</p><h3>精英斥候</h3></div><button class="copy-link" type="button" data-anchor="scout-variant-67">链接</button></header>
+      <dl class="entry-fields"><div><dt>限制</dt><dd>斥候</dd></div>
+<div><dt>等级</dt><dd>4、8、12、16或20级</dd></div>
+<div><dt>失去</dt><dd>对应等级上的斥候奇术</dd></div>
+<div><dt>得到</dt><dd>你可以从以下列表中获得一项奖励专长，你必须满足专长的前置条件：杂耍、灵活、警觉、竞技、盲斗、长臂*、寓守于攻、危险感知*、闪避、坚忍、远程射击、强韧加强、听风辨形*、精通先攻、精通游泳*、钢铁意志、闪电反射、灵活移动、近程射击、精准射击、即时备战、快速勘查*、快速装填、移动射击、技能专攻、跳跃攻击、追踪。</dd></div>
+<div><dt>特殊</dt><dd>你可以多次选取此职业替换能力，每次替换对应等级上的一项斥候奇术。*Cad专长</dd></div></dl>
+    </article></div></section>
+        <div class="empty-state" id="scout-empty" hidden><p class="empty-glyph" aria-hidden="true">∅</p><h3>没有找到对应规则</h3><p>试试缩短关键词或切换分类。</p><button class="button button-ghost" id="clear-scout" type="button">清除筛选</button></div>
+      </section>
+    </main>
+  </body>
+</html>
