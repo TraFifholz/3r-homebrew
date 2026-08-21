@@ -19,7 +19,7 @@ const nav = (current) => [
   ["index.html", "扩展技法"], ["feats.html", "专长"],
   ["cleric-variants.html", "牧师"], ["scout-rework.html", "斥候"], ["ranger-update.html", "巡林客"],
   ["rogue-update.html", "游荡者"], ["bard-movements.html", "诗人"], ["prestige-classes.html", "进阶职业"],
-  ["harrowing.html", "哈罗占卜"], ["equipment.html", "装备"],
+  ["harrowing.html", "法术"], ["equipment.html", "装备"],
 ].map(([href, label]) => `<a href="${href}"${href === current ? ' aria-current="page"' : ""}>${label}</a>`).join("") + '<a href="https://github.com/TraFifholz/3r-homebrew" target="_blank" rel="noreferrer">GitHub ↗</a>';
 
 export async function writeCatalogPage({ outputPath, slug, title, eyebrow, description, sections, unit = "项", placeholder }) {

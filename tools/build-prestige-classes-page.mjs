@@ -92,6 +92,25 @@ function splitSections(raw) {
   return Object.fromEntries(Object.entries(sections).map(([name, lines]) => [name, lines.join("\n").trim()]));
 }
 
+const embeddedRuleBlocks = [
+  { start: "狂舞（战斗）", end: "神圣光辉（Divine Light" },
+  { start: "日光召唤\n", end: "日光屏障（Solar Defense" },
+  { start: "优雅繁星（战斗）", end: "星之声（Starsong" },
+  { start: "梦中盛宴（Dream Feast；黛丝娜法术，出自Inner Sea Gods）", end: "化蝶（Butterfly）" },
+  { start: "寻梦师\nLucid Dreamer", end: "跨界旅者（Tapestry Traveler" },
+];
+
+function stripEmbeddedRules(raw) {
+  for (const block of embeddedRuleBlocks) {
+    const start = raw.indexOf(block.start);
+    if (start < 0) continue;
+    const end = raw.indexOf(block.end, start + block.start.length);
+    if (end < 0) throw new Error(`Missing embedded rule boundary: ${block.start}`);
+    raw = `${raw.slice(0, start)}\n\n${raw.slice(end)}`;
+  }
+  return raw;
+}
+
 function renderParagraph(text) {
   const lines = text.split("\n").map((line) => line.trim()).filter(Boolean);
   if (!lines.length) return "";
@@ -125,6 +144,7 @@ const classes = extractClasses().map((classEntry) => {
     raw = extra.raw;
     extraTables.push(extra);
   }
+  raw = stripEmbeddedRules(raw);
   return { ...classEntry, sections: splitSections(raw), mainTable: main, extraTables };
 });
 
@@ -137,6 +157,6 @@ function renderClass(classEntry, index) {
 const entriesHtml = classes.map(renderClass).join("\n");
 const html = `<!doctype html>
 <html lang="zh-CN"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="theme-color" content="#16130f" /><meta name="description" content="D&D与Pathfinder中文规则资料：七个完整进阶职业。" /><meta property="og:title" content="进阶职业｜3R Homebrew" /><meta property="og:description" content="七个结构化整理的完整进阶职业。" /><meta property="og:type" content="article" /><meta property="og:url" content="https://trafifholz.github.io/3r-homebrew/prestige-classes.html" /><meta name="twitter:card" content="summary" /><title>进阶职业｜3R Homebrew</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml" /><link rel="stylesheet" href="styles.css" /><script src="catalog-library.js" defer></script></head>
-<body data-unit="项"><header class="site-header"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">3R</span><strong>Homebrew</strong></a><nav aria-label="主导航"><a href="index.html">扩展技法</a><a href="feats.html">专长</a><a href="cleric-variants.html">牧师</a><a href="scout-rework.html">斥候</a><a href="ranger-update.html">巡林客</a><a href="rogue-update.html">游荡者</a><a href="bard-movements.html">诗人</a><a href="prestige-classes.html" aria-current="page">进阶职业</a><a href="harrowing.html">哈罗占卜</a><a href="equipment.html">装备</a><a href="https://github.com/TraFifholz/3r-homebrew" target="_blank" rel="noreferrer">GitHub ↗</a></nav></header><main><section class="library section-shell ranger-library" id="library" aria-labelledby="library-title"><div class="section-heading library-heading"><div><p class="eyebrow">职业资料 · 7个完整进阶职业</p><h2 id="library-title">进阶职业</h2></div><p id="result-count" role="status" aria-live="polite">共 7 项</p></div><div class="toolbar scout-toolbar" aria-label="进阶职业筛选工具"><label class="search-box"><span class="sr-only">搜索进阶职业</span><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜索职业、进阶条件、能力或等级表…" autocomplete="off" /><kbd>/</kbd></label></div><section class="scout-section" data-section="prestige"><h3>进阶职业 <span>7</span></h3><div class="scout-entries">${entriesHtml}</div></section><div class="empty-state" id="catalog-empty" hidden><p class="empty-glyph" aria-hidden="true">∅</p><h3>没有找到对应资料</h3><p>试试缩短关键词。</p><button class="button button-ghost" id="clear-catalog" type="button">清除筛选</button></div></section></main></body></html>`;
+<body data-unit="项"><header class="site-header"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">3R</span><strong>Homebrew</strong></a><nav aria-label="主导航"><a href="index.html">扩展技法</a><a href="feats.html">专长</a><a href="cleric-variants.html">牧师</a><a href="scout-rework.html">斥候</a><a href="ranger-update.html">巡林客</a><a href="rogue-update.html">游荡者</a><a href="bard-movements.html">诗人</a><a href="prestige-classes.html" aria-current="page">进阶职业</a><a href="harrowing.html">法术</a><a href="equipment.html">装备</a><a href="https://github.com/TraFifholz/3r-homebrew" target="_blank" rel="noreferrer">GitHub ↗</a></nav></header><main><section class="library section-shell ranger-library" id="library" aria-labelledby="library-title"><div class="section-heading library-heading"><div><p class="eyebrow">职业资料 · 7个完整进阶职业</p><h2 id="library-title">进阶职业</h2></div><p id="result-count" role="status" aria-live="polite">共 7 项</p></div><div class="toolbar scout-toolbar" aria-label="进阶职业筛选工具"><label class="search-box"><span class="sr-only">搜索进阶职业</span><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜索职业、进阶条件、能力或等级表…" autocomplete="off" /><kbd>/</kbd></label></div><section class="scout-section" data-section="prestige"><h3>进阶职业 <span>7</span></h3><div class="scout-entries">${entriesHtml}</div></section><div class="empty-state" id="catalog-empty" hidden><p class="empty-glyph" aria-hidden="true">∅</p><h3>没有找到对应资料</h3><p>试试缩短关键词。</p><button class="button button-ghost" id="clear-catalog" type="button">清除筛选</button></div></section></main></body></html>`;
 await writeFile(outputPath, `${html}\n`, "utf8");
 console.log(JSON.stringify({ total: classes.length, tables: classes.reduce((sum, item) => sum + 1 + item.extraTables.length, 0), sections: ["概览", "进阶要求", "本职技能", "职业进展", "职业特性"] }, null, 2));

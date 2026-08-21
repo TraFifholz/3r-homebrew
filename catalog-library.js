@@ -9,6 +9,13 @@ const unit = document.body.dataset.unit || "项";
 let category = "全部";
 const normalize = (value) => value.toLocaleLowerCase("zh-CN").replace(/\s+/g, "");
 
+const legacyDomainHash = location.pathname.endsWith("/feats.html") && location.hash.match(/^#feats-domain-(2[3-9]|3\d|4[01])$/);
+if (legacyDomainHash) {
+  const targetId = `feats-domain-${Number(legacyDomainHash[1]) + 28}`;
+  history.replaceState(null, "", `#${targetId}`);
+  document.getElementById(targetId)?.scrollIntoView();
+}
+
 function render() {
   const query = normalize(searchInput.value);
   let visible = 0;

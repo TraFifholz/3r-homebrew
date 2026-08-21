@@ -29,5 +29,30 @@ const greaterFields = [{ label: "学派", value: "预言系" }, ...greaterFieldM
 const greaterDuration = greaterSource.match(/^持续：[^\n]+$/m);
 greaterFields.push({ label: "效果与花色能力", value: greaterSource.slice(greaterDuration.index + greaterDuration[0].length).trim() });
 
-const result = await writeCatalogPage({ outputPath: new URL("../harrowing.html", import.meta.url), slug: "harrowing", title: "哈罗占卜法术", eyebrow: "预言系法术 · 基础与高等", description: "哈罗占卜与高等哈罗占卜的完整规则、花色检定和特殊能力。", sections: [{ key: "spell", label: "法术规则", entryLabel: "预言系法术", entries: [{ name: "哈罗占卜（Harrowing）", fields }, { name: "高等哈罗占卜（Harrowing, Greater）", fields: greaterFields }] }], placeholder: "搜索施法信息、花色、检定或特殊能力…" });
+const dreamMarker = "梦中盛宴（Dream Feast；黛丝娜法术，出自Inner Sea Gods）";
+const dreamStart = source.indexOf(dreamMarker);
+const dreamEnd = source.indexOf("化蝶（Butterfly）", dreamStart);
+if (dreamStart < 0 || dreamEnd < 0) throw new Error("Missing Dream Feast spell boundaries");
+const dreamBlock = source.slice(dreamStart + dreamMarker.length, dreamEnd).trim();
+const dreamFieldNames = ["学派", "环级", "施法时间", "成分", "范围", "目标", "持续时间", "豁免", "法术抗力"];
+const dreamFields = dreamFieldNames.map((name) => {
+  const match = dreamBlock.match(new RegExp(`^${name}：([^\\n]+)$`, "m"));
+  if (!match) throw new Error(`Missing Dream Feast field: ${name}`);
+  return { label: name === "环级" ? "等级" : name, value: match[1].trim() };
+});
+const dreamResistance = dreamBlock.match(/^法术抗力：[^\n]+$/m);
+dreamFields.push({ label: "效果", value: dreamBlock.slice(dreamResistance.index + dreamResistance[0].length).trim() });
+
+const result = await writeCatalogPage({
+  outputPath: new URL("../harrowing.html", import.meta.url),
+  slug: "harrowing",
+  title: "法术",
+  eyebrow: "法术资料 · 3项",
+  description: "哈罗占卜、高等哈罗占卜与进阶职业引用法术的完整规则。",
+  sections: [
+    { key: "harrow", label: "哈罗占卜", shortLabel: "哈罗", entryLabel: "预言系法术", entries: [{ name: "哈罗占卜（Harrowing）", fields }, { name: "高等哈罗占卜（Harrowing, Greater）", fields: greaterFields }] },
+    { key: "other", label: "其他法术", shortLabel: "其他", entryLabel: "法术", entries: [{ name: "梦中盛宴（Dream Feast）", fields: dreamFields }] },
+  ],
+  placeholder: "搜索法术、施法信息、花色或效果…",
+});
 console.log(JSON.stringify(result, null, 2));
