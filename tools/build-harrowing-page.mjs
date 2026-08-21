@@ -12,22 +12,22 @@ const fieldNames = ["学派", "等级", "施法时间", "成分", "范围", "目
 const fields = fieldNames.map((name) => {
   const match = block.match(new RegExp(`^${name}：([^\\n]+)$`, "m"));
   if (!match) throw new Error(`Missing Harrowing field: ${name}`);
-  return { label: name, value: match[1].trim() };
+  return { label: name, value: match[1].trim(), kind: "meta" };
 });
 const duration = block.match(/^持续时间：[^\n]+$/m);
 const effect = block.slice(duration.index + duration[0].length).trim();
-fields.push({ label: "效果与牌表", value: effect });
+fields.push({ label: "效果与牌表", value: effect, kind: "body" });
 
 const greaterFieldMap = [
   ["等级", "等级"], ["施法时间", "施放时间"], ["成分", "成分"], ["范围", "范围"], ["目标", "目标"], ["持续时间", "持续"],
 ];
-const greaterFields = [{ label: "学派", value: "预言系" }, ...greaterFieldMap.map(([label, sourceLabel]) => {
+const greaterFields = [{ label: "学派", value: "预言系", kind: "meta" }, ...greaterFieldMap.map(([label, sourceLabel]) => {
   const match = greaterSource.match(new RegExp(`^${sourceLabel}：([^\\n]+)$`, "m"));
   if (!match) throw new Error(`Missing Greater Harrowing field: ${sourceLabel}`);
-  return { label, value: match[1].trim() };
+  return { label, value: match[1].trim(), kind: "meta" };
 })];
 const greaterDuration = greaterSource.match(/^持续：[^\n]+$/m);
-greaterFields.push({ label: "效果与花色能力", value: greaterSource.slice(greaterDuration.index + greaterDuration[0].length).trim() });
+greaterFields.push({ label: "效果与花色能力", value: greaterSource.slice(greaterDuration.index + greaterDuration[0].length).trim(), kind: "body" });
 
 const dreamMarker = "梦中盛宴（Dream Feast；黛丝娜法术，出自Inner Sea Gods）";
 const dreamStart = source.indexOf(dreamMarker);
@@ -38,10 +38,10 @@ const dreamFieldNames = ["学派", "环级", "施法时间", "成分", "范围",
 const dreamFields = dreamFieldNames.map((name) => {
   const match = dreamBlock.match(new RegExp(`^${name}：([^\\n]+)$`, "m"));
   if (!match) throw new Error(`Missing Dream Feast field: ${name}`);
-  return { label: name === "环级" ? "等级" : name, value: match[1].trim() };
+  return { label: name === "环级" ? "等级" : name, value: match[1].trim(), kind: "meta" };
 });
 const dreamResistance = dreamBlock.match(/^法术抗力：[^\n]+$/m);
-dreamFields.push({ label: "效果", value: dreamBlock.slice(dreamResistance.index + dreamResistance[0].length).trim() });
+dreamFields.push({ label: "效果", value: dreamBlock.slice(dreamResistance.index + dreamResistance[0].length).trim(), kind: "body" });
 
 const result = await writeCatalogPage({
   outputPath: new URL("../harrowing.html", import.meta.url),
@@ -50,8 +50,8 @@ const result = await writeCatalogPage({
   eyebrow: "法术资料 · 3项",
   description: "哈罗占卜、高等哈罗占卜与进阶职业引用法术的完整规则。",
   sections: [
-    { key: "harrow", label: "哈罗占卜", shortLabel: "哈罗", entryLabel: "预言系法术", entries: [{ name: "哈罗占卜（Harrowing）", fields }, { name: "高等哈罗占卜（Harrowing, Greater）", fields: greaterFields }] },
-    { key: "other", label: "其他法术", shortLabel: "其他", entryLabel: "法术", entries: [{ name: "梦中盛宴（Dream Feast）", fields: dreamFields }] },
+    { key: "harrow", label: "哈罗占卜", shortLabel: "哈罗", entryLabel: "预言系法术", entries: [{ name: "哈罗占卜（Harrowing）", fields, className: "spell-entry" }, { name: "高等哈罗占卜（Harrowing, Greater）", fields: greaterFields, className: "spell-entry" }] },
+    { key: "other", label: "其他法术", shortLabel: "其他", entryLabel: "法术", entries: [{ name: "梦中盛宴（Dream Feast）", fields: dreamFields, className: "spell-entry" }] },
   ],
   placeholder: "搜索法术、施法信息、花色或效果…",
 });

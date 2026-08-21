@@ -36,28 +36,31 @@ const professionDefinitions = [
 ];
 const normalizePrerequisiteTerms = (entry) => ({
   ...entry,
-  fields: entry.fields.map((field) => ({
-    ...field,
-    label: field.label === "先决条件" ? "前提" : field.label,
-    value: field.value.replaceAll("先决条件：", "前提：").replaceAll("先决条件:", "前提："),
-  })),
+  fields: parseRuleBody(entry.fields.map((field) => field.value).join("\n\n").replaceAll("先决条件：", "前提：").replaceAll("先决条件:", "前提：")),
 });
 const entries = [...extractEntries(base, definitions, "新进阶职业："), ...extractEntries(harrow, harrowDefinitions, "新物品"), ...extractEntries(profession, professionDefinitions, null)].map(normalizePrerequisiteTerms);
 if (entries.length !== 22) throw new Error(`Unexpected feat count: ${entries.length}`);
 
 function parseRuleBody(body) {
-  const values = { "简介": "", "前提": "", "效果": "", "特殊": "" };
+  const values = { "简介": [], "前提": [], "效果": [], "特殊": [] };
   let active = "简介";
+  let prerequisiteComplete = false;
   for (const rawLine of body.trim().split("\n")) {
     const line = rawLine.trim();
-    if (!line) continue;
-    const marker = line.match(/^(前提|先决条件|效果|好处|特殊)：\s*(.*)$/);
+    const marker = line.match(/^(前提|先决条件|效果|好处|专长效果|特殊)：\s*(.*)$/);
     if (marker) {
-      active = ({ "先决条件": "前提", "好处": "效果" })[marker[1]] ?? marker[1];
-      values[active] += `${values[active] ? "\n" : ""}${marker[2]}`;
-    } else values[active] += `${values[active] ? "\n" : ""}${line}`;
+      active = ({ "先决条件": "前提", "好处": "效果", "专长效果": "效果" })[marker[1]] ?? marker[1];
+      values[active].push(marker[2]);
+      prerequisiteComplete = active === "前提";
+      continue;
+    }
+    if (prerequisiteComplete && line) {
+      active = "效果";
+      prerequisiteComplete = false;
+    }
+    values[active].push(line);
   }
-  return Object.entries(values).filter(([, value]) => value).map(([label, value]) => ({ label, value }));
+  return Object.entries(values).map(([label, lines]) => ({ label, value: lines.join("\n").replace(/^\n+|\n+$/g, "") })).filter((field) => field.value);
 }
 
 function parseTypedFeats(text) {
