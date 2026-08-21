@@ -34,7 +34,15 @@ const professionDefinitions = [
   { name: "老练躬耕者（Adept Naturalist）", marker: "老练躬耕者 Adept Naturalist" },
   { name: "锦囊妙计（Brilliant Planner）", marker: "锦囊妙计\nBrilliant Planner" },
 ];
-const entries = [...extractEntries(base, definitions, "新进阶职业："), ...extractEntries(harrow, harrowDefinitions, "新物品"), ...extractEntries(profession, professionDefinitions, null)];
+const normalizePrerequisiteTerms = (entry) => ({
+  ...entry,
+  fields: entry.fields.map((field) => ({
+    ...field,
+    label: field.label === "先决条件" ? "前提" : field.label,
+    value: field.value.replaceAll("先决条件：", "前提：").replaceAll("先决条件:", "前提："),
+  })),
+});
+const entries = [...extractEntries(base, definitions, "新进阶职业："), ...extractEntries(harrow, harrowDefinitions, "新物品"), ...extractEntries(profession, professionDefinitions, null)].map(normalizePrerequisiteTerms);
 if (entries.length !== 22) throw new Error(`Unexpected feat count: ${entries.length}`);
 
 function parseRuleBody(body) {
