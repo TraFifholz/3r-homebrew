@@ -84,7 +84,7 @@ function referencedFeat({ name, tags, startMarker, endMarker, stripLine }) {
 }
 
 const typedEntries = [...parseTypedFeats(combatAmbush), ...parseTypedFeats(divineCompanion)];
-if (typedEntries.length !== 31) throw new Error(`Unexpected new feat count: ${typedEntries.length}`);
+if (typedEntries.length !== 32) throw new Error(`Unexpected new feat count: ${typedEntries.length}`);
 const referencedEntries = [
   referencedFeat({ name: "狂舞（Dervish Dance）", tags: ["战斗"], startMarker: "狂舞（战斗）", endMarker: "神圣光辉（Divine Light" }),
   referencedFeat({ name: "日光召唤（Sunlight Summons）", tags: ["一般"], startMarker: "日光召唤\n", endMarker: "日光屏障（Solar Defense" }),
@@ -95,7 +95,7 @@ const generalEntries = [...entries, ...typedEntries.filter((entry) => entry.cate
 const combatEntries = [...typedEntries.filter((entry) => entry.category === "combat"), ...referencedEntries.filter((entry) => entry.category === "combat")];
 const ambushEntries = typedEntries.filter((entry) => entry.category === "ambush");
 const divineEntries = typedEntries.filter((entry) => entry.category === "divine");
-if (generalEntries.length !== 28 || combatEntries.length !== 9 || ambushEntries.length !== 15 || divineEntries.length !== 5) throw new Error("Unexpected categorized feat counts");
+if (generalEntries.length !== 29 || combatEntries.length !== 9 || ambushEntries.length !== 15 || divineEntries.length !== 5) throw new Error("Unexpected categorized feat counts");
 const domainEntries = domainData.feats.map((feat, index) => ({
   id: `feats-domain-${String(index + 51).padStart(2, "0")}`,
   name: `${feat.name}[领域]`,
@@ -110,7 +110,7 @@ const result = await writeCatalogPage({
   outputPath: new URL("../feats.html", import.meta.url),
   slug: "feats",
   title: "专长",
-  eyebrow: "角色选项 · 76项专长",
+  eyebrow: "角色选项 · 77项专长",
   description: "D&D与Pathfinder中文规则资料：一般、战斗、伏击、神力与领域专长。",
   sections: [
     { key: "feat", label: "一般专长", shortLabel: "一般", entryLabel: "专长", entries: generalEntries },
