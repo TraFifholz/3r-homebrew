@@ -1,5 +1,5 @@
 import { readFile } from "node:fs/promises";
-import { writeCatalogPage } from "./catalog-page-helpers.mjs";
+import { escapeHtml, formatValue, writeCatalogPage } from "./catalog-page-helpers.mjs";
 
 const source = (await readFile(new URL("../sources/feats-prestige.txt", import.meta.url), "utf8")).replace(/\r\n?/g, "\n");
 const greaterSource = (await readFile(new URL("../sources/greater-harrowing.txt", import.meta.url), "utf8")).replace(/\r\n?/g, "\n").trim();
@@ -16,7 +16,26 @@ const fields = fieldNames.map((name) => {
 });
 const duration = block.match(/^持续时间：[^\n]+$/m);
 const effect = block.slice(duration.index + duration[0].length).trim();
-fields.push({ label: "效果与牌表", value: effect, kind: "body" });
+const suitTableMarker = "\n花色\n";
+const deckMarker = "\n哈罗套牌（Harrow Deck）：";
+const suitTableStart = effect.indexOf(suitTableMarker);
+const deckStart = effect.indexOf(deckMarker);
+if (suitTableStart < 0 || deckStart < 0) throw new Error("Missing Harrowing table boundaries");
+const effectIntro = effect.slice(0, suitTableStart).trim();
+const deckText = effect.slice(deckStart + deckMarker.length).trim();
+const suitRows = [
+  ["铁锤", "力量", "攻击检定（远程或近战）"], ["钥匙", "敏捷", "反射豁免检定"],
+  ["盾牌", "体质", "强韧豁免检定"], ["书籍", "智力", "技能检定"],
+  ["星星", "感知", "意志豁免检定"], ["皇冠", "魅力", "任意d20检定"],
+];
+const alignmentRows = [
+  ["LG", "CE"], ["NG", "NE"], ["CG", "LE"], ["LN", "CN"],
+  ["N", "LG、LE、CG或CE（施法时选择1种）"], ["CN", "LN"],
+  ["LE", "CG"], ["NE", "NG"], ["CE", "LG"],
+];
+const renderRows = (rows) => rows.map((row) => `<tr>${row.map((cell, index) => index === 0 ? `<th scope="row">${escapeHtml(cell)}</th>` : `<td>${escapeHtml(cell)}</td>`).join("")}</tr>`).join("");
+const effectHtml = `<div class="spell-prose">${formatValue(effectIntro)}</div><section class="spell-rule-table"><h5>花色与相关检定</h5><div class="spell-table-wrap"><table><thead><tr><th scope="col">花色</th><th scope="col">属性</th><th scope="col">相关检定</th></tr></thead><tbody>${renderRows(suitRows)}</tbody></table></div></section><section class="spell-rule-table"><h5>对立阵营</h5><div class="spell-table-wrap"><table><thead><tr><th scope="col">目标阵营</th><th scope="col">对立阵营</th></tr></thead><tbody>${renderRows(alignmentRows)}</tbody></table></div></section><section class="spell-deck-note"><h5>哈罗套牌（Harrow Deck）</h5><div class="spell-prose">${formatValue(deckText)}</div></section>`;
+fields.push({ label: "效果与牌表", value: effect, html: effectHtml, kind: "body" });
 
 const greaterFieldMap = [
   ["等级", "等级"], ["施法时间", "施放时间"], ["成分", "成分"], ["范围", "范围"], ["目标", "目标"], ["持续时间", "持续"],
