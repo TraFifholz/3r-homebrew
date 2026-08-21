@@ -135,7 +135,7 @@ const html = `<!doctype html>
     <header class="site-header">
       <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">3R</span><strong>Homebrew</strong></a>
       <nav aria-label="主导航">
-        <a href="index.html">扩展技法</a><a href="domain-feats.html">领域专长</a><a href="cleric-variants.html">职业替换</a><a href="scout-rework.html" aria-current="page">斥候重做</a><a href="ranger-update.html">巡林客更新</a><a href="rogue-update.html">游荡者更新</a><a href="https://github.com/TraFifholz/3r-homebrew" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href="index.html">扩展技法</a><a href="domain-feats.html">领域专长</a><a href="cleric-variants.html">职业替换</a><a href="scout-rework.html" aria-current="page">斥候重做</a><a href="ranger-update.html">巡林客更新</a><a href="rogue-update.html">游荡者更新</a><a href="bard-movements.html">诗人乐章</a><a href="https://github.com/TraFifholz/3r-homebrew" target="_blank" rel="noreferrer">GitHub ↗</a>
       </nav>
     </header>
     <main>
