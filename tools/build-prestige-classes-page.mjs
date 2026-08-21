@@ -117,6 +117,16 @@ function stripEmbeddedRules(raw) {
 function renderParagraph(text) {
   const lines = text.split("\n").map((line) => line.trim()).filter(Boolean);
   if (!lines.length) return "";
+  const firstColon = lines[0].indexOf("：");
+  if (lines.length > 1 && firstColon > 0 && firstColon < 72 && lines.slice(1).every((line) => line.startsWith("- "))) {
+    const items = lines.slice(1).map((line) => {
+      const item = line.slice(2).trim();
+      const colon = item.indexOf("：");
+      if (colon < 1) return `<li>${escapeHtml(item)}</li>`;
+      return `<li><strong>${escapeHtml(item.slice(0, colon))}</strong><span>${escapeHtml(item.slice(colon + 1).trim())}</span></li>`;
+    }).join("");
+    return `<div class="prestige-rule"><h5>${escapeHtml(lines[0].slice(0, firstColon))}</h5><div class="prestige-rule-body"><p>${escapeHtml(lines[0].slice(firstColon + 1).trim())}</p><ul class="prestige-option-list">${items}</ul></div></div>`;
+  }
   return lines.map((line) => {
     const colon = line.indexOf("：");
     if (colon > 0 && colon < 72) return `<div class="prestige-rule"><h5>${escapeHtml(line.slice(0, colon))}</h5><p>${escapeHtml(line.slice(colon + 1).trim())}</p></div>`;

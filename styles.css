@@ -165,6 +165,11 @@ h1, h2, h3 { margin: 0; font-family: var(--serif); line-height: 1.25; }
 .prestige-rule:last-child { padding-bottom: 0; }
 .prestige-rule h5 { margin: 0; color: #514a41; font: 700 .82rem/1.65 var(--sans); }
 .prestige-rule p { margin: 0; }
+.prestige-rule-body { min-width: 0; }
+.prestige-option-list { display: grid; gap: .55rem; margin: .65rem 0 0; padding: 0; list-style: none; }
+.prestige-option-list li { display: grid; gap: .12rem; padding-top: .55rem; border-top: 1px solid var(--line); }
+.prestige-option-list strong { color: #514a41; font: 700 .82rem/1.55 var(--sans); }
+.prestige-option-list span { line-height: 1.72; }
 .prestige-advancement .class-table-wrap { max-height: 34rem; }
 .prestige-advancement table { min-width: 720px; }
 
