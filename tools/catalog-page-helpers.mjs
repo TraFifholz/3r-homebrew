@@ -18,7 +18,7 @@ export function extractEntries(source, definitions, endMarker, searchFrom = 0) {
 const nav = (current) => [
   ["index.html", "扩展技法"], ["feats.html", "专长"],
   ["cleric-variants.html", "牧师"], ["scout-rework.html", "斥候"], ["ranger-update.html", "巡林客"],
-  ["rogue-update.html", "游荡者"], ["bard-movements.html", "诗人"], ["prestige-classes.html", "进阶职业"],
+  ["rogue-update.html", "游荡者"], ["bard-movements.html", "诗人"], ["soulknife.html", "魂刃"], ["prestige-classes.html", "进阶职业"],
   ["harrowing.html", "法术"], ["equipment.html", "装备"],
 ].map(([href, label]) => `<a href="${href}"${href === current ? ' aria-current="page"' : ""}>${label}</a>`).join("") + '<a href="https://github.com/TraFifholz/3r-homebrew" target="_blank" rel="noreferrer">GitHub ↗</a>';
 
