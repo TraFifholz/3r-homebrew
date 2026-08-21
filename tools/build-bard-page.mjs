@@ -85,7 +85,7 @@ const html = `<!doctype html>
   <body>
     <header class="site-header">
       <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">3R</span><strong>Homebrew</strong></a>
-      <nav aria-label="主导航"><a href="index.html">扩展技法</a><a href="domain-feats.html">领域专长</a><a href="cleric-variants.html">职业替换</a><a href="scout-rework.html">斥候重做</a><a href="ranger-update.html">巡林客更新</a><a href="rogue-update.html">游荡者更新</a><a href="bard-movements.html" aria-current="page">诗人乐章</a><a href="https://github.com/TraFifholz/3r-homebrew" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
+      <nav aria-label="主导航"><a href="index.html">扩展技法</a><a href="domain-feats.html">领域专长</a><a href="cleric-variants.html">职业替换</a><a href="scout-rework.html">斥候重做</a><a href="ranger-update.html">巡林客更新</a><a href="rogue-update.html">游荡者更新</a><a href="bard-movements.html" aria-current="page">诗人乐章</a><a href="feats-prestige.html">专长与进阶</a><a href="https://github.com/TraFifholz/3r-homebrew" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
     </header>
     <main>
       <section class="library section-shell ranger-library" id="library" aria-labelledby="library-title">
