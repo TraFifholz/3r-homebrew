@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#16130f" />
-    <meta name="description" content="D&D 3.5e 中文房规：游荡者专长与职业替换能力更新。" />
+    <meta name="description" content="D&D 3.5e 中文房规：游荡者专长、哈罗选项与职业替换能力更新。" />
     <meta property="og:title" content="游荡者更新｜3R Homebrew" />
-    <meta property="og:description" content="游荡者专长与职业替换能力。" />
+    <meta property="og:description" content="游荡者专长、哈罗选项与职业替换能力。" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://trafifholz.github.io/3r-homebrew/rogue-update.html" />
     <meta name="twitter:card" content="summary" />
@@ -18,16 +18,16 @@
   <body>
     <header class="site-header">
       <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">3R</span><strong>Homebrew</strong></a>
-      <nav aria-label="主导航"><a href="index.html">扩展技法</a><a href="domain-feats.html">领域专长</a><a href="cleric-variants.html">职业替换</a><a href="scout-rework.html">斥候重做</a><a href="ranger-update.html">巡林客更新</a><a href="rogue-update.html" aria-current="page">游荡者更新</a><a href="bard-movements.html">诗人乐章</a><a href="feats-prestige.html">专长与进阶</a><a href="https://github.com/TraFifholz/3r-homebrew" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
+      <nav aria-label="主导航"><a href="index.html">扩展技法</a><a href="domain-feats.html">领域专长</a><a href="feats.html">专长</a><a href="cleric-variants.html">牧师</a><a href="scout-rework.html">斥候</a><a href="ranger-update.html">巡林客</a><a href="rogue-update.html" aria-current="page">游荡者</a><a href="bard-movements.html">诗人</a><a href="prestige-classes.html">进阶职业</a><a href="harrowing.html">哈罗占卜</a><a href="harrow-equipment.html">装备</a><a href="https://github.com/TraFifholz/3r-homebrew" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
     </header>
     <main>
       <section class="library section-shell ranger-library" id="library" aria-labelledby="library-title">
-        <div class="section-heading library-heading"><div><p class="eyebrow">职业更新 · 8 项规则条目</p><h2 id="library-title">游荡者（Rogue）</h2></div><p id="result-count" role="status" aria-live="polite">共 8 项</p></div>
+        <div class="section-heading library-heading"><div><p class="eyebrow">职业更新 · 13 项规则条目</p><h2 id="library-title">游荡者（Rogue）</h2></div><p id="result-count" role="status" aria-live="polite">共 13 项</p></div>
         <div class="toolbar scout-toolbar" aria-label="游荡者规则筛选工具">
           <label class="search-box"><span class="sr-only">搜索游荡者规则</span><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜索专长、替换能力或规则文字…" autocomplete="off" /><kbd>/</kbd></label>
           <div class="type-filters" id="rogue-filters" role="group" aria-label="按规则分类筛选"><button class="filter is-active" type="button" data-category="全部" aria-pressed="true">全部</button><button class="filter" type="button" data-category="feat" aria-pressed="false">专长</button><button class="filter" type="button" data-category="variant" aria-pressed="false">职业替换</button></div>
         </div>
-        <section class="scout-section" data-section="feat"><h3>游荡者专长 <span>3</span></h3><div class="scout-entries"><article class="scout-entry" id="rogue-feat-01" data-category="feat">
+        <section class="scout-section" data-section="feat"><h3>游荡者专长 <span>8</span></h3><div class="scout-entries"><article class="scout-entry" id="rogue-feat-01" data-category="feat">
       <header><div><p class="type-label">一般专长</p><h3>激发潜能</h3></div><button class="copy-link" type="button" data-anchor="rogue-feat-01">链接</button></header>
       <dl class="entry-fields"><div><dt>先决条件</dt><dd>游荡者1</dd></div>
 <div><dt>效果</dt><dd>你从敏捷、智力、感知或魅力中选择一种作为她的关键属性，一旦选定此后不可更改。你可以以一个自由动作进入一种高度集中的状态，在此状态下，游荡者在所有关键属性的属性检定和基于她的关键属性的技能检定上获得相当于游荡者职业等级的加值，且在基本陆地速度上获得+10尺增强加值，持续每游荡者等级1轮。游荡者每天可以使用此能力的次数相当于3+游荡者的关键属性调整值。</dd></div>
@@ -42,37 +42,62 @@
       <header><div><p class="type-label">一般专长</p><h3>招牌魔杖</h3></div><button class="copy-link" type="button" data-anchor="rogue-feat-03">链接</button></header>
       <dl class="entry-fields"><div><dt>先决条件</dt><dd>激发潜能</dd></div>
 <div><dt>效果</dt><dd>你可以花费一小时时间，仔细研究一支魔杖的构成及触发方法，并将其绑定为你的招牌魔杖。在使用招牌魔杖时，你无需通过使用魔法装置检定就可以使用它。花费1次激发潜能使用次数，你可以自由动作拔出招牌魔杖，只要你携带了它。</dd></div></dl>
+    </article>
+<article class="scout-entry" id="rogue-feat-04" data-category="feat">
+      <header><div><p class="type-label">一般专长</p><h3>听天由命</h3></div><button class="copy-link" type="button" data-anchor="rogue-feat-04">链接</button></header>
+      <dl class="entry-fields"><div><dt>先决条件</dt><dd>激发潜能</dd></div>
+<div><dt>效果</dt><dd>花费一次激发潜能，你可以声明两个不同的动作，它们基于不同类型的投骰或检定，比如攻击某生物（攻击投骰）以及从同一个生物面前溜过去（隐秘检定）。以标准动作，你抽一张哈罗牌，并声明任意两种牌型（如剑冠钥vs其他），只要两种选择有均等的几率被选中即可。<br>若你在下轮实施了被选中的动作，你会在该行动所需的投骰类型（用特定武器进行攻击的攻击骰、一个特定技能、特定属性或特定豁免的检定）用的投骰上获得等于盗贼等级一半（最小1）的幸运加值，持续1分钟。<br>若你在下轮实施的是其它动作（无论是否声明了），你会战栗一分钟。</dd></div></dl>
+    </article>
+<article class="scout-entry" id="rogue-feat-05" data-category="feat">
+      <header><div><p class="type-label">一般专长</p><h3>欺骗命运</h3></div><button class="copy-link" type="button" data-anchor="rogue-feat-05">链接</button></header>
+      <dl class="entry-fields"><div><dt>先决条件</dt><dd>激发潜能，游荡者5</dd></div>
+<div><dt>效果</dt><dd>花费一次激发潜能，你可以在GM揭示结果前，重投一个你刚刚投过的d20骰。你必须接受第二次的结果，即使它更糟。你在14级可以使用此能力每日2次，20级时每日3次。</dd></div></dl>
+    </article>
+<article class="scout-entry" id="rogue-feat-06" data-category="feat">
+      <header><div><p class="type-label">一般专长</p><h3>愉悦吉格舞</h3></div><button class="copy-link" type="button" data-anchor="rogue-feat-06">链接</button></header>
+      <dl class="entry-fields"><div><dt>先决条件</dt><dd>游荡者1</dd></div>
+<div><dt>效果</dt><dd>每日一次，盗贼可以将一点点古老的瓦瑞西安魔法混入其步法，以一种会传染的热情跳起舞来，并强迫周围其它人加入。盗贼可以指定30呎内一个类人生物并尝试以整轮动作进行表演（舞蹈）检定，这不会引发借机攻击。目标必须通过意志豁免（DC=盗贼表演检定结果）否则会失控，跟着一起跳起来。只要盗贼继续花费整轮动作跳舞，目标就必须跟着跳。当目标被攻击或突然陷入危险，效果停止。每轮可以尝试一个杂技检定或表演（舞蹈）检定，或者一个意志豁免对抗盗贼的表演（舞蹈）检定来结束这个效果，对抗成功则24小时内不再会被同一个盗贼所影响。本能力是影响心灵的效果。盗贼的智力至少要有12才能选择本天赋。盗贼可以使用本能力每天一次，每5个盗贼等级额外再加一次。</dd></div></dl>
+    </article>
+<article class="scout-entry" id="rogue-feat-07" data-category="feat">
+      <header><div><p class="type-label">一般专长</p><h3>纸质工具</h3></div><button class="copy-link" type="button" data-anchor="rogue-feat-07">链接</button></header>
+      <dl class="entry-fields"><div><dt>先决条件</dt><dd>游荡者1</dd></div>
+<div><dt>效果</dt><dd>传统的盗贼工具容易被怀疑，但没有门卫在意一副牌。只要盗贼有一副普通的牌，她可以以损毁一张牌的代价，进行一次解除装置检定，如同他带着盗贼工具一般。若他使用的是哈罗牌，则视为精制品工具（解除装置检定获得+2环境加值），检定完成后牌仍然会损毁。每天一次，以及每5个盗贼等级再加一次，盗贼可以在尝试手上功夫检定时双骰去高，他必须在检定前就声明使用本专长。</dd></div></dl>
+    </article>
+<article class="scout-entry" id="rogue-feat-08" data-category="feat">
+      <header><div><p class="type-label">伏击专长</p><h3>哈罗一击</h3></div><button class="copy-link" type="button" data-anchor="rogue-feat-08">链接</button></header>
+      <dl class="entry-fields"><div><dt>先决条件</dt><dd>偷袭+3d6</dd></div>
+<div><dt>效果</dt><dd>每日一次，当你对生物进行偷袭时，你可以从拥有的哈罗牌里随机抽一张牌。若你偷袭命中，代替通常的偷袭伤害，造成等于你偷袭骰个数的属性伤害，属性就是那张哈罗牌对应的属性。15级和20级，各获得一次额外的每日使用次数。</dd></div></dl>
     </article></div></section>
-        <section class="scout-section" data-section="variant"><h3>职业替换能力 <span>5</span></h3><div class="scout-entries"><article class="scout-entry" id="rogue-variant-04" data-category="variant">
-      <header><div><p class="type-label">职业替换能力</p><h3>恶毒优势</h3></div><button class="copy-link" type="button" data-anchor="rogue-variant-04">链接</button></header>
+        <section class="scout-section" data-section="variant"><h3>职业替换能力 <span>5</span></h3><div class="scout-entries"><article class="scout-entry" id="rogue-variant-09" data-category="variant">
+      <header><div><p class="type-label">职业替换能力</p><h3>恶毒优势</h3></div><button class="copy-link" type="button" data-anchor="rogue-variant-09">链接</button></header>
       <dl class="entry-fields"><div><dt>限制</dt><dd>游荡者</dd></div>
 <div><dt>等级</dt><dd>1级</dd></div>
 <div><dt>失去</dt><dd>在夹击敌人时造成偷袭伤害的能力</dd></div>
 <div><dt>得到</dt><dd>任何处于纠缠（Entangled）、恍惚（Staggered）或缓慢（例如缓慢术）状态中的敌人在面对你的攻击时失去AC上的敏捷加值。</dd></div></dl>
     </article>
-<article class="scout-entry" id="rogue-variant-05" data-category="variant">
-      <header><div><p class="type-label">职业替换能力</p><h3>恐惧收割</h3></div><button class="copy-link" type="button" data-anchor="rogue-variant-05">链接</button></header>
+<article class="scout-entry" id="rogue-variant-10" data-category="variant">
+      <header><div><p class="type-label">职业替换能力</p><h3>恐惧收割</h3></div><button class="copy-link" type="button" data-anchor="rogue-variant-10">链接</button></header>
       <dl class="entry-fields"><div><dt>限制</dt><dd>游荡者</dd></div>
 <div><dt>等级</dt><dd>1级</dd></div>
 <div><dt>失去</dt><dd>在夹击敌人时造成偷袭伤害的能力</dd></div>
 <div><dt>得到</dt><dd>任何处于战栗（Shaken）、惊惧（Frightened）或恐慌（Panicked）状态中的敌人在面对你的攻击时失去AC上的敏捷加值。</dd></div></dl>
     </article>
-<article class="scout-entry" id="rogue-variant-06" data-category="variant">
-      <header><div><p class="type-label">职业替换能力</p><h3>深陷泥沼</h3></div><button class="copy-link" type="button" data-anchor="rogue-variant-06">链接</button></header>
+<article class="scout-entry" id="rogue-variant-11" data-category="variant">
+      <header><div><p class="type-label">职业替换能力</p><h3>深陷泥沼</h3></div><button class="copy-link" type="button" data-anchor="rogue-variant-11">链接</button></header>
       <dl class="entry-fields"><div><dt>限制</dt><dd>游荡者</dd></div>
 <div><dt>等级</dt><dd>1级</dd></div>
 <div><dt>失去</dt><dd>在夹击敌人时造成偷袭伤害的能力</dd></div>
 <div><dt>得到</dt><dd>任何处于困难地形中的敌人在面对你的攻击时失去AC上的敏捷加值，除非此敌人能在困难地形中如常移动。</dd></div></dl>
     </article>
-<article class="scout-entry" id="rogue-variant-07" data-category="variant">
-      <header><div><p class="type-label">职业替换能力</p><h3>背后突袭</h3></div><button class="copy-link" type="button" data-anchor="rogue-variant-07">链接</button></header>
+<article class="scout-entry" id="rogue-variant-12" data-category="variant">
+      <header><div><p class="type-label">职业替换能力</p><h3>背后突袭</h3></div><button class="copy-link" type="button" data-anchor="rogue-variant-12">链接</button></header>
       <dl class="entry-fields"><div><dt>限制</dt><dd>游荡者</dd></div>
 <div><dt>等级</dt><dd>1级</dd></div>
 <div><dt>失去</dt><dd>在夹击敌人时造成偷袭伤害的能力</dd></div>
 <div><dt>得到</dt><dd>当你对敌人进行背袭时，该敌人在面对你的攻击时失去AC上的敏捷加值，免疫夹击的生物也免疫背袭（若你能够在你当回合曾占据过的方格中选出一格，使该方格和你当前所在的方格满足夹击某个敌人的条件，则回合结束前你对该敌人的攻击就将视作背袭，参见裂风流武术详述）。</dd></div></dl>
     </article>
-<article class="scout-entry" id="rogue-variant-08" data-category="variant">
-      <header><div><p class="type-label">职业替换能力</p><h3>特技大师</h3></div><button class="copy-link" type="button" data-anchor="rogue-variant-08">链接</button></header>
+<article class="scout-entry" id="rogue-variant-13" data-category="variant">
+      <header><div><p class="type-label">职业替换能力</p><h3>特技大师</h3></div><button class="copy-link" type="button" data-anchor="rogue-variant-13">链接</button></header>
       <dl class="entry-fields"><div><dt>限制</dt><dd>游荡者</dd></div>
 <div><dt>等级</dt><dd>1级</dd></div>
 <div><dt>失去</dt><dd>在夹击敌人时造成偷袭伤害的能力</dd></div>

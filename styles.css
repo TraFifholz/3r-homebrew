@@ -23,11 +23,11 @@ button, input { font: inherit; }
 button { color: inherit; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
 
-.site-header { position: sticky; z-index: 20; top: 0; display: flex; align-items: center; justify-content: space-between; min-height: 58px; padding: .45rem clamp(1rem, 4vw, 3rem); border-bottom: 1px solid var(--line); background: rgb(243 239 229 / 97%); }
-.brand { display: flex; gap: .8rem; align-items: center; text-decoration: none; line-height: 1.15; }
+.site-header { position: sticky; z-index: 20; top: 0; display: flex; gap: 1rem; align-items: center; justify-content: space-between; min-height: 58px; padding: .45rem clamp(1rem, 4vw, 3rem); border-bottom: 1px solid var(--line); background: rgb(243 239 229 / 97%); }
+.brand { display: flex; flex: 0 0 auto; gap: .8rem; align-items: center; text-decoration: none; line-height: 1.15; }
 .brand-mark { display: grid; width: 2rem; height: 2rem; place-items: center; border-radius: 2px; background: var(--red); color: #fff8e8; font: 700 .72rem/1 var(--serif); letter-spacing: .03em; }
 .brand strong { display: block; font: 700 1rem/1.2 var(--serif); letter-spacing: .02em; }
-nav { display: flex; gap: clamp(1rem, 3vw, 2.5rem); align-items: center; }
+nav { display: flex; min-width: 0; gap: .9rem; align-items: center; overflow-x: auto; white-space: nowrap; scrollbar-width: thin; }
 nav a { color: #4f493f; font-size: .87rem; text-decoration: none; }
 nav a:hover { color: var(--red); }
 nav a[aria-current="page"] { color: var(--red); font-weight: 700; }

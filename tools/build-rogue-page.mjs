@@ -3,6 +3,7 @@ import { readFile, writeFile } from "node:fs/promises";
 const sourcePath = new URL("../sources/rogue-update.txt", import.meta.url);
 const outputPath = new URL("../rogue-update.html", import.meta.url);
 const source = (await readFile(sourcePath, "utf8")).replace(/^\uFEFF/, "").replace(/\r\n?/g, "\n").trim();
+const harrowSource = (await readFile(new URL("../sources/harrow-options.txt", import.meta.url), "utf8")).replace(/^\uFEFF/, "").replace(/\r\n?/g, "\n").trim();
 
 const escapeHtml = (value) => value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
 const formatValue = (value) => escapeHtml(value.trim()).replace(/\n+/g, "<br>");
@@ -14,22 +15,28 @@ function between(start, end) {
   return source.slice(startIndex + start.length, endIndex).trim();
 }
 
-const featBlock = between("游荡者专长", "游荡者职业替换能力");
-const featMatches = [...featBlock.matchAll(/^([^\n]+)\[一般\]\s*$/gm)];
-const feats = featMatches.map((match, index) => {
-  const chunk = featBlock.slice(match.index + match[0].length, featMatches[index + 1]?.index ?? featBlock.length).trim();
-  const prerequisite = chunk.match(/^先决条件：([^\n]+)$/m)?.[1]?.trim();
-  const specialIndex = chunk.indexOf("\n特殊：");
-  const effectStart = chunk.indexOf("\n") + 1;
-  return {
-    name: match[1].trim(),
-    fields: {
-      "先决条件": prerequisite,
-      "效果": chunk.slice(effectStart, specialIndex < 0 ? chunk.length : specialIndex).trim(),
-      ...(specialIndex < 0 ? {} : { "特殊": chunk.slice(specialIndex + "\n特殊：".length).trim() }),
-    },
-  };
-});
+function parseFeats(block) {
+  const matches = [...block.matchAll(/^([^\n]+)\[(一般|伏击)\]\s*$/gm)];
+  return matches.map((match, index) => {
+    const chunk = block.slice(match.index + match[0].length, matches[index + 1]?.index ?? block.length).trim();
+    const prerequisite = chunk.match(/^(?:先决条件|前提)：([^\n]+)$/m);
+    if (!prerequisite) throw new Error(`Missing prerequisite: ${match[1]}`);
+    const specialIndex = chunk.indexOf("\n特殊：");
+    return {
+      name: match[1].trim(), type: match[2],
+      fields: {
+        "先决条件": prerequisite[1].trim(),
+        "效果": chunk.slice(prerequisite.index + prerequisite[0].length, specialIndex < 0 ? chunk.length : specialIndex).trim(),
+        ...(specialIndex < 0 ? {} : { "特殊": chunk.slice(specialIndex + "\n特殊：".length).trim() }),
+      },
+    };
+  });
+}
+
+const feats = [
+  ...parseFeats(between("游荡者专长", "游荡者职业替换能力")),
+  ...parseFeats(harrowSource.slice(harrowSource.indexOf("盗贼选项") + "盗贼选项".length)),
+];
 
 const variantBlock = source.slice(source.indexOf("游荡者职业替换能力") + "游荡者职业替换能力".length).trim();
 const variantMatches = [...variantBlock.matchAll(/^([^\n：]+)\n+限制：/gm)];
@@ -43,7 +50,7 @@ const variants = variantMatches.map((match, index) => {
   return { name: match[1].trim(), fields };
 });
 
-if (feats.length !== 3 || variants.length !== 5) throw new Error(`Unexpected counts: ${JSON.stringify({ feats: feats.length, variants: variants.length })}`);
+if (feats.length !== 8 || variants.length !== 5) throw new Error(`Unexpected counts: ${JSON.stringify({ feats: feats.length, variants: variants.length })}`);
 
 let sequence = 0;
 function renderEntries(entries, category, label, order) {
@@ -52,7 +59,7 @@ function renderEntries(entries, category, label, order) {
     const id = `rogue-${category}-${String(sequence).padStart(2, "0")}`;
     const fieldHtml = order.filter((field) => entry.fields[field]).map((field) => `<div><dt>${field}</dt><dd>${formatValue(entry.fields[field])}</dd></div>`).join("\n");
     return `<article class="scout-entry" id="${id}" data-category="${category}">
-      <header><div><p class="type-label">${label}</p><h3>${escapeHtml(entry.name)}</h3></div><button class="copy-link" type="button" data-anchor="${id}">链接</button></header>
+      <header><div><p class="type-label">${entry.type ? `${entry.type}专长` : label}</p><h3>${escapeHtml(entry.name)}</h3></div><button class="copy-link" type="button" data-anchor="${id}">链接</button></header>
       <dl class="entry-fields">${fieldHtml}</dl>
     </article>`;
   }).join("\n");
@@ -65,9 +72,9 @@ const html = `<!doctype html>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#16130f" />
-    <meta name="description" content="D&D 3.5e 中文房规：游荡者专长与职业替换能力更新。" />
+    <meta name="description" content="D&D 3.5e 中文房规：游荡者专长、哈罗选项与职业替换能力更新。" />
     <meta property="og:title" content="游荡者更新｜3R Homebrew" />
-    <meta property="og:description" content="游荡者专长与职业替换能力。" />
+    <meta property="og:description" content="游荡者专长、哈罗选项与职业替换能力。" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://trafifholz.github.io/3r-homebrew/rogue-update.html" />
     <meta name="twitter:card" content="summary" />
@@ -79,7 +86,7 @@ const html = `<!doctype html>
   <body>
     <header class="site-header">
       <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">3R</span><strong>Homebrew</strong></a>
-      <nav aria-label="主导航"><a href="index.html">扩展技法</a><a href="domain-feats.html">领域专长</a><a href="cleric-variants.html">职业替换</a><a href="scout-rework.html">斥候重做</a><a href="ranger-update.html">巡林客更新</a><a href="rogue-update.html" aria-current="page">游荡者更新</a><a href="bard-movements.html">诗人乐章</a><a href="feats-prestige.html">专长与进阶</a><a href="https://github.com/TraFifholz/3r-homebrew" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
+      <nav aria-label="主导航"><a href="index.html">扩展技法</a><a href="domain-feats.html">领域专长</a><a href="feats.html">专长</a><a href="cleric-variants.html">牧师</a><a href="scout-rework.html">斥候</a><a href="ranger-update.html">巡林客</a><a href="rogue-update.html" aria-current="page">游荡者</a><a href="bard-movements.html">诗人</a><a href="prestige-classes.html">进阶职业</a><a href="harrowing.html">哈罗占卜</a><a href="harrow-equipment.html">装备</a><a href="https://github.com/TraFifholz/3r-homebrew" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
     </header>
     <main>
       <section class="library section-shell ranger-library" id="library" aria-labelledby="library-title">

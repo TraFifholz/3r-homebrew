@@ -1,10 +1,11 @@
 const searchInput = document.querySelector("#search");
-const filters = [...document.querySelectorAll("#option-filters .filter")];
+const filters = [...document.querySelectorAll("#catalog-filters .filter")];
 const entries = [...document.querySelectorAll(".scout-entry[data-category]")];
 const sections = [...document.querySelectorAll(".scout-section[data-section]")];
 const resultCount = document.querySelector("#result-count");
-const emptyState = document.querySelector("#option-empty");
-const clearButton = document.querySelector("#clear-options");
+const emptyState = document.querySelector("#catalog-empty");
+const clearButton = document.querySelector("#clear-catalog");
+const unit = document.body.dataset.unit || "项";
 let category = "全部";
 const normalize = (value) => value.toLocaleLowerCase("zh-CN").replace(/\s+/g, "");
 
@@ -17,7 +18,7 @@ function render() {
     if (matches) visible += 1;
   }
   for (const section of sections) section.hidden = !section.querySelector(".scout-entry:not([hidden])");
-  resultCount.textContent = visible === entries.length ? `共 ${entries.length} 项` : `找到 ${visible} 项 · 共 ${entries.length} 项`;
+  resultCount.textContent = visible === entries.length ? `共 ${entries.length} ${unit}` : `找到 ${visible} ${unit} · 共 ${entries.length} ${unit}`;
   emptyState.hidden = visible !== 0;
 }
 
@@ -31,7 +32,12 @@ filters.forEach((button) => button.addEventListener("click", () => {
   render();
 }));
 searchInput.addEventListener("input", render);
-clearButton.addEventListener("click", () => { searchInput.value = ""; filters[0].click(); searchInput.focus(); });
+clearButton.addEventListener("click", () => {
+  searchInput.value = "";
+  if (filters.length) filters[0].click();
+  else render();
+  searchInput.focus();
+});
 document.addEventListener("keydown", (event) => { if (event.key === "/" && document.activeElement !== searchInput) { event.preventDefault(); searchInput.focus(); } });
 
 for (const button of document.querySelectorAll(".copy-link[data-anchor]")) {
