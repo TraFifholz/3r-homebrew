@@ -66,7 +66,6 @@ async function init() {
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const payload = await response.json();
     feats = payload.feats;
-    document.querySelector("#total-count").textContent = feats.length;
     render();
     if (window.location.hash.startsWith("#domain-feat-")) {
       requestAnimationFrame(() => document.querySelector(window.location.hash)?.scrollIntoView());

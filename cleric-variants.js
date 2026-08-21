@@ -62,7 +62,6 @@ async function init() {
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const payload = await response.json();
     variants = payload.variants;
-    document.querySelector("#total-count").textContent = variants.length;
     render();
     if (window.location.hash.startsWith("#cleric-variant-")) {
       requestAnimationFrame(() => document.querySelector(window.location.hash)?.scrollIntoView());

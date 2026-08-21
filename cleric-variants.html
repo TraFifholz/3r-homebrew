@@ -18,43 +18,19 @@
     <script src="cleric-variants.js" type="module"></script>
   </head>
   <body class="variant-page">
-    <a class="skip-link" href="#library">跳至替换能力列表</a>
     <header class="site-header">
-      <a class="brand" href="index.html" aria-label="3R Homebrew 首页">
-        <span class="brand-mark" aria-hidden="true">3R</span>
-        <span><strong>Homebrew</strong><small>D&amp;D 3.5e 房规档案</small></span>
-      </a>
+      <a class="brand" href="index.html" aria-label="3R Homebrew 首页"><span class="brand-mark" aria-hidden="true">3R</span><strong>Homebrew</strong></a>
       <nav aria-label="主导航">
         <a href="index.html">扩展技法</a>
         <a href="domain-feats.html">领域专长</a>
-        <a href="#library">替换能力</a>
-        <a href="#framework">规则简介</a>
-        <a href="https://github.com/TraFifholz/3r-homebrew" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+        <a href="cleric-variants.html" aria-current="page">职业替换</a>
+        <a href="https://github.com/TraFifholz/3r-homebrew" target="_blank" rel="noreferrer">GitHub ↗</a>
       </nav>
     </header>
-
-    <main id="top">
-      <section class="hero variant-hero" aria-labelledby="page-title">
-        <div class="hero-copy">
-          <p class="eyebrow">D&amp;D 3.5e · 职业构筑选项</p>
-          <h1 id="page-title">牧师职业替换能力</h1>
-          <p class="lede">以领域、法术位等原有职业能力为代价，换取更明确的战斗专长路线或更集中的领域施法能力。</p>
-          <div class="hero-actions"><a class="button button-primary" href="#library">查看替换能力</a></div>
-        </div>
-        <aside class="hero-card" aria-label="规则概览">
-          <p class="folio">HOUSE RULE · 03</p>
-          <div class="hero-card-count"><strong id="total-count">2</strong><span>项替换能力</span></div>
-          <dl class="domain-summary">
-            <div><dt>适用职业</dt><dd>牧师</dd></div>
-            <div><dt>取得等级</dt><dd>1级</dd></div>
-            <div><dt>替换代价</dt><dd>至少一领域</dd></div>
-          </dl>
-        </aside>
-      </section>
-
+    <main>
       <section class="library section-shell" id="library" aria-labelledby="library-title">
         <div class="section-heading library-heading">
-          <div><p class="eyebrow">职业选项</p><h2 id="library-title">替换能力</h2></div>
+          <div><p class="eyebrow">职业选项 · 2 项</p><h2 id="library-title">牧师职业替换能力</h2></div>
           <p id="result-count" role="status" aria-live="polite">正在载入规则……</p>
         </div>
         <div class="toolbar domain-toolbar" aria-label="职业替换能力搜索工具">
@@ -73,40 +49,27 @@
           <p>试试搜索“领域”“法术位”“专长”或具体名称。</p>
           <button class="button button-ghost" id="clear-search" type="button">清除搜索</button>
         </div>
-      </section>
 
-      <section class="about section-shell" id="framework" aria-labelledby="framework-title">
-        <div class="section-heading">
-          <p class="eyebrow">使用说明</p>
-          <h2 id="framework-title">在1级作出替换</h2>
-        </div>
-        <p class="editor-note"><strong>规则说明：</strong>这些能力仅限牧师，并在1级取得。选择时失去条目所列的原职业能力，换取对应的“得到”效果；具体代价分别计算。</p>
+        <template id="variant-template">
+          <article class="technique-card variant-card" data-type="职业替换能力">
+            <div class="card-index" aria-hidden="true"></div>
+            <div class="card-body">
+              <header>
+                <div><p class="type-label">牧师职业替换能力</p><h3></h3></div>
+                <button class="copy-link" type="button" title="复制此能力的链接" aria-label="复制此能力的链接">链接</button>
+              </header>
+              <dl class="variant-meta">
+                <div><dt>限制</dt><dd class="restriction"></dd></div>
+                <div><dt>等级</dt><dd class="level"></dd></div>
+              </dl>
+              <dl class="rule-block variant-rule-block">
+                <div class="loss"><dt>失去</dt><dd></dd></div>
+                <div class="gain"><dt>得到</dt><dd></dd></div>
+              </dl>
+            </div>
+          </article>
+        </template>
       </section>
     </main>
-
-    <footer>
-      <p><strong>3R Homebrew</strong> · 桌面角色扮演房规档案</p>
-      <p>Dungeons &amp; Dragons 为 Wizards of the Coast 的商标。本项目为非官方同人内容。</p>
-    </footer>
-
-    <template id="variant-template">
-      <article class="technique-card variant-card" data-type="职业替换能力">
-        <div class="card-index" aria-hidden="true"></div>
-        <div class="card-body">
-          <header>
-            <div><p class="type-label">牧师职业替换能力</p><h3></h3></div>
-            <button class="copy-link" type="button" title="复制此能力的链接" aria-label="复制此能力的链接">链接</button>
-          </header>
-          <dl class="variant-meta">
-            <div><dt>限制</dt><dd class="restriction"></dd></div>
-            <div><dt>等级</dt><dd class="level"></dd></div>
-          </dl>
-          <dl class="rule-block variant-rule-block">
-            <div class="loss"><dt>失去</dt><dd></dd></div>
-            <div class="gain"><dt>得到</dt><dd></dd></div>
-          </dl>
-        </div>
-      </article>
-    </template>
   </body>
 </html>

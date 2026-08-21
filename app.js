@@ -15,15 +15,6 @@ let visibleLimit = PAGE_SIZE;
 const normalize = (value) => value.toLocaleLowerCase("zh-CN").replace(/\s+/g, "");
 const anchorFor = (item) => `technique-${item.id}`;
 
-function updateSummary(items) {
-  const count = (type) => items.filter((item) => item.type === type).length;
-  document.querySelector("#total-count").textContent = items.length;
-  document.querySelector("#count-operation").textContent = count("操作技法");
-  document.querySelector("#count-mental").textContent = count("精神技法");
-  document.querySelector("#count-movement").textContent = count("移动技法");
-  document.querySelector("#count-social").textContent = count("交流技法");
-}
-
 function filteredItems() {
   const query = normalize(searchInput.value);
   return data.filter((item) => {
@@ -120,7 +111,6 @@ async function init() {
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const payload = await response.json();
     data = payload.techniques;
-    updateSummary(data);
     render();
 
     if (window.location.hash.startsWith("#technique-")) {
