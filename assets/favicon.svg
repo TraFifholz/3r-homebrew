@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="3R">
+  <circle cx="32" cy="32" r="30" fill="#9d3028"/>
+  <circle cx="32" cy="32" r="25" fill="none" stroke="#f3efe5" stroke-width="2"/>
+  <text x="32" y="39" text-anchor="middle" fill="#fff8e8" font-family="Georgia,serif" font-size="22" font-weight="700">3R</text>
+</svg>

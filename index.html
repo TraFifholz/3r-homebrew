@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#16130f" />
+    <meta name="description" content="D&D 3.5e 中文房规资料库：扩展技法。支持全文搜索、类型筛选与规则直达链接。" />
+    <meta property="og:title" content="扩展技法｜3R Homebrew" />
+    <meta property="og:description" content="为 D&D 3.5e 整理的 278 项扩展技法中文规则。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://trafifholz.github.io/3r-homebrew/" />
+    <meta property="og:image" content="https://trafifholz.github.io/3r-homebrew/assets/og-cover.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="扩展技法｜3R Homebrew" />
+    <meta name="twitter:description" content="为 D&D 3.5e 整理的 278 项扩展技法中文规则。" />
+    <meta name="twitter:image" content="https://trafifholz.github.io/3r-homebrew/assets/og-cover.png" />
+    <title>扩展技法｜3R Homebrew</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" type="module"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#library">跳至技法列表</a>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="3R Homebrew 首页">
+        <span class="brand-mark" aria-hidden="true">3R</span>
+        <span><strong>Homebrew</strong><small>D&amp;D 3.5e 房规档案</small></span>
+      </a>
+      <nav aria-label="主导航">
+        <a href="#about">规则简介</a>
+        <a href="#library">技法库</a>
+        <a href="https://github.com/TraFifholz/3r-homebrew" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow">D&amp;D 3.5e · 技能系统扩展</p>
+          <h1 id="page-title">扩展技法</h1>
+          <p class="lede">让投入技能等级不只是数字增长。技法把娴熟的手艺、敏锐的判断与传奇般的行动，变成可被选择、记录与使用的角色能力。</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#library">浏览全部技法</a>
+            <a class="button button-ghost" href="#about">了解规则框架</a>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="规则概览">
+          <p class="folio">HOUSE RULE · 01</p>
+          <div class="hero-card-count"><strong id="total-count">278</strong><span>项技法</span></div>
+          <dl>
+            <div><dt>操作</dt><dd id="count-operation">78</dd></div>
+            <div><dt>精神</dt><dd id="count-mental">79</dd></div>
+            <div><dt>移动</dt><dd id="count-movement">42</dd></div>
+            <div><dt>交流</dt><dd id="count-social">78</dd></div>
+          </dl>
+        </aside>
+      </section>
+
+      <section class="about section-shell" id="about" aria-labelledby="about-title">
+        <div class="section-heading">
+          <p class="eyebrow">规则框架</p>
+          <h2 id="about-title">从受训，到精通</h2>
+        </div>
+        <div class="principles">
+          <article><span>01</span><h3>技能驱动</h3><p>每项技法以前提中的技能等级或相关能力为门槛，让技能投资获得新的玩法回报。</p></article>
+          <article><span>02</span><h3>四种方向</h3><p>操作、精神、移动与交流技法对应不同的行动方式；基础技法则不占用通常的技法数量上限。</p></article>
+          <article><span>03</span><h3>以条目为准</h3><p>使用次数、动作类型、检定 DC 与能否重复选择，均以每项技法的“效果”和“特殊”字段为准。</p></article>
+        </div>
+        <p class="editor-note"><strong>编者注：</strong>本页忠实整理当前房规原文。它不是 D&amp;D 3.5e 官方规则；具体取得节奏与技法数量上限，请由团内规则另行确定。</p>
+      </section>
+
+      <section class="library section-shell" id="library" aria-labelledby="library-title">
+        <div class="section-heading library-heading">
+          <div><p class="eyebrow">规则索引</p><h2 id="library-title">技法库</h2></div>
+          <p id="result-count" role="status" aria-live="polite">正在载入规则……</p>
+        </div>
+
+        <div class="toolbar" aria-label="技法筛选工具">
+          <label class="search-box">
+            <span class="sr-only">搜索技法</span>
+            <span aria-hidden="true">⌕</span>
+            <input id="search" type="search" placeholder="搜索名称、前提或规则文字…" autocomplete="off" />
+            <kbd>/</kbd>
+          </label>
+          <div class="type-filters" id="type-filters" role="group" aria-label="按技法类型筛选">
+            <button class="filter is-active" type="button" data-type="全部" aria-pressed="true">全部</button>
+            <button class="filter" type="button" data-type="操作技法" aria-pressed="false">操作</button>
+            <button class="filter" type="button" data-type="精神技法" aria-pressed="false">精神</button>
+            <button class="filter" type="button" data-type="移动技法" aria-pressed="false">移动</button>
+            <button class="filter" type="button" data-type="交流技法" aria-pressed="false">交流</button>
+            <button class="filter" type="button" data-type="基础技法" aria-pressed="false">基础</button>
+          </div>
+        </div>
+
+        <div class="technique-list" id="technique-list"></div>
+        <div class="empty-state" id="empty-state" hidden>
+          <p class="empty-glyph" aria-hidden="true">∅</p>
+          <h3>没有找到对应技法</h3>
+          <p>试试缩短关键词，或切换到其他技法类型。</p>
+          <button class="button button-ghost" id="clear-filters" type="button">清除筛选</button>
+        </div>
+        <button class="load-more" id="load-more" type="button" hidden>显示更多</button>
+      </section>
+    </main>
+
+    <footer>
+      <p><strong>3R Homebrew</strong> · 桌面角色扮演房规档案</p>
+      <p>Dungeons &amp; Dragons 为 Wizards of the Coast 的商标。本项目为非官方同人内容。</p>
+    </footer>
+
+    <template id="technique-template">
+      <article class="technique-card">
+        <div class="card-index" aria-hidden="true"></div>
+        <div class="card-body">
+          <header>
+            <div><p class="type-label"></p><h3></h3></div>
+            <button class="copy-link" type="button" title="复制此技法的链接" aria-label="复制此技法的链接">链接</button>
+          </header>
+          <dl class="rule-block">
+            <div class="prerequisite"><dt>前提</dt><dd></dd></div>
+            <div class="effect"><dt>效果</dt><dd></dd></div>
+            <div class="specials"><dt>特殊</dt><dd><ul></ul></dd></div>
+          </dl>
+        </div>
+      </article>
+    </template>
+  </body>
+</html>
