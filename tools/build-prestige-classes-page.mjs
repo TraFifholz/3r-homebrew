@@ -14,7 +14,7 @@ const definitions = [
   { name: "哈罗牌大师（Harrower）", marker: "哈罗牌大师（Harrower）", endMarker: "附：哈罗占卜（Harrowing）", table: "表：哈罗牌大师", columns: ["等级", "基本攻击加值", "强韧", "反射", "意志", "特殊能力", "每日法术"], extraTables: [{ marker: "表：哈罗套牌阵营组合", title: "哈罗套牌阵营组合", columns: ["自身阵营", "对立阵营", "部分相符"], rows: 9 }] },
   { name: "晨花隐者（Dawnflower Anchorite）", marker: "晨花隐者（Dawnflower Anchorite）", table: "表：晨花隐者", columns: ["等级", "BAB", "强韧", "反射", "意志", "特殊能力", "每日法术"], inlineTable: true },
   { name: "天体颂唱者（Sphere Singer）", marker: "天体颂唱者（Sphere Singer）", table: "表：天体颂唱者", columns: ["等级", "BAB", "强韧", "反射", "意志", "特殊能力", "每日法术"], inlineTable: true },
-  { name: "调查员（Investigator）", marker: "调查员（Investigator）", table: "表：调查员进阶职业", columns: ["等级", "基本攻击加值", "强韧", "反射", "意志", "特殊能力", "灵感点"] },
+  { name: "调查员（Investigator）", marker: "调查员（Investigator）", table: "表：调查员进阶职业", columns: ["等级", "基本攻击加值", "强韧", "反射", "意志", "特殊能力", "灵感点", "每日法术／显能"] },
 ];
 
 function extractClasses() {
